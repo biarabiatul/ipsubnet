@@ -11,7 +11,7 @@ class KelasSeeder extends Seeder
 {
     public function run(): void
     {
-        $dosen = User::where('email', 'rabiatul@gmail.com')->first();
+        $dosen = User::where('email', 'rabiatul@gmailcd.com')->first();
 
         Kelas::create([
             'nama_kelas' => 'A2',

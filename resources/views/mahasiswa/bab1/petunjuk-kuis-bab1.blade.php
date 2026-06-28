@@ -339,6 +339,16 @@
                 <li><i class="bi bi-check-circle-fill"></i>
                     Keluar dari halaman saat kuis berlangsung akan menyebabkan semua jawaban hilang.
                 </li>
+
+                <li><i class="bi bi-check-circle-fill"></i>
+                    Jika nilai kuis <strong>di bawah KKM</strong>, maka <strong>progres belajar tidak akan
+                        bertambah</strong>.
+                </li>
+
+                <li><i class="bi bi-check-circle-fill"></i>
+                    Nilai remedial mengikuti batas maksimal KKM. Meskipun hasil remedial
+                    melebihi KKM, nilai yang tercatat tetap mengikuti nilai KKM.
+                </li>
             </ul>
 
             <button class="btn-mulai" onclick="mulaiKuis()">
@@ -392,7 +402,7 @@
                             }
 
                         @endphp
-                            <tr>
+                        <tr>
                             <td>{{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y H:i') }}</td>
 
                             <td>{{ $item->total_benar }}</td>
@@ -490,31 +500,31 @@
                             let user = item.jawaban_pengguna ? item.jawaban_pengguna.toLowerCase() : null;
 
                             html += `
-                                            <div class="card">
+                                                <div class="card">
 
-                                                <div class="question-number">
-                                                    Soal ${index + 1}
-                                                </div>
+                                                    <div class="question-number">
+                                                        Soal ${index + 1}
+                                                    </div>
 
-                                                <div class="question">
-                                                    ${item.soal}
-                                                </div>
+                                                    <div class="question">
+                                                        ${item.soal}
+                                                    </div>
 
-                                                <div class="label">Jawaban kamu</div>
+                                                    <div class="label">Jawaban kamu</div>
 
-                                                <div class="option user">
-                                                    ${user ? user.toUpperCase() + '. ' + (opsi[user] ?? '') : '-'}
-                                                </div>
+                                                    <div class="option user">
+                                                        ${user ? user.toUpperCase() + '. ' + (opsi[user] ?? '') : '-'}
+                                                    </div>
 
-                                                <div class="status ${item.status}">
-                                                    ${item.status === 'benar'
+                                                    <div class="status ${item.status}">
+                                                        ${item.status === 'benar'
                                     ? '<i class="bi bi-check-circle-fill"></i> Jawaban benar'
                                     : '<i class="bi bi-x-circle-fill"></i> Jawaban salah'
                                 }
-                                                </div>
+                                                    </div>
 
-                                            </div>
-                                        `;
+                                                </div>
+                                            `;
                         });
                     }
 

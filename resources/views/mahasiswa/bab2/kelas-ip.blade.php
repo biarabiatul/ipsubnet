@@ -1057,13 +1057,13 @@
                     </ol>
 
                     <div style="
-                                                        margin-top:14px;
-                                                        padding:10px 14px;
-                                                        background:#fef3c7;
-                                                        border:1px solid #f59e0b;
-                                                        font-weight:700;
-                                                        display:inline-block;
-                                                        border-radius:6px;">
+                                                            margin-top:14px;
+                                                            padding:10px 14px;
+                                                            background:#fef3c7;
+                                                            border:1px solid #f59e0b;
+                                                            font-weight:700;
+                                                            display:inline-block;
+                                                            border-radius:6px;">
 
                         <i class="bi bi-check-circle-fill" style="color:#16a34a;"></i>
                         Kesimpulan: IP Address <strong>192.168.10.5</strong> termasuk <strong>Kelas C</strong>
@@ -1271,45 +1271,45 @@
             if (!soal || soal.length === 0) {
                 return;
             }
-            
+
             const data = soal[indexSoal];
             console.log(data);
 
             let html = `
-                <div class="question-box">
-                    <p class="question-number">
-                    Soal ${indexSoal + 1} dari ${soal.length}
-                    </p>
-                    <p class="question-text">${data.q}</p>
-                `;
+                    <div class="question-box">
+                        <p class="question-number">
+                        Soal ${indexSoal + 1} dari ${soal.length}
+                        </p>
+                        <p class="question-text">${data.q}</p>
+                    `;
 
             if (data.tipe === "pilgan") {
                 html += `<div class="options">`;
                 data.opsi.forEach((o, i) => {
                     html += `
-                                                    <label class="option ${terkunci[indexSoal] ? 'locked' : ''}">
-                                                        <input
-                                                        type="radio"
-                                                        name="jawaban"
-                                                        value="${i}"
-                                                        ${terkunci[indexSoal] ? 'disabled' : ''}
-                                                        >
-                                                        <span class="option-text">${o}</span>
-                                                    </label>
-                                                    `;
+                                                        <label class="option ${terkunci[indexSoal] ? 'locked' : ''}">
+                                                            <input
+                                                            type="radio"
+                                                            name="jawaban"
+                                                            value="${i}"
+                                                            ${terkunci[indexSoal] ? 'disabled' : ''}
+                                                            >
+                                                            <span class="option-text">${o}</span>
+                                                        </label>
+                                                        `;
                 });
                 html += `</div>`;
             }
 
             if (data.tipe === "isian") {
                 html += `
-                                                    <input
-                                                    id="jawabanIsian"
-                                                    class="fill-input"
-                                                    placeholder="..."
-                                                    ${terkunci[indexSoal] ? 'disabled' : ''}
-                                                    >
-                                                `;
+                                                        <input
+                                                        id="jawabanIsian"
+                                                        class="fill-input"
+                                                        placeholder="..."
+                                                        ${terkunci[indexSoal] ? 'disabled' : ''}
+                                                        >
+                                                    `;
             }
 
             html += `</div>`;
@@ -1624,34 +1624,34 @@
                 Swal.fire({
                     title: "Cek Pemahaman",
                     html: `
-                                                    <div style="text-align:center; margin-bottom:12px; font-size:16px;">
-                                                        IP Address 150.10.1.1 termasuk kelas apa?
-                                                    </div>
+                                                        <div style="text-align:center; margin-bottom:12px; font-size:16px;">
+                                                            IP Address 150.10.1.1 termasuk kelas apa?
+                                                        </div>
 
-                                                    <div class="swal-radio-group">
+                                                        <div class="swal-radio-group">
 
-                                                        <label class="swal-radio-option">
-                                                            <input type="radio" name="kelas" value="A">
-                                                            Kelas A
-                                                        </label>
+                                                            <label class="swal-radio-option">
+                                                                <input type="radio" name="kelas" value="A">
+                                                                Kelas A
+                                                            </label>
 
-                                                        <label class="swal-radio-option">
-                                                            <input type="radio" name="kelas" value="B">
-                                                            Kelas B
-                                                        </label>
+                                                            <label class="swal-radio-option">
+                                                                <input type="radio" name="kelas" value="B">
+                                                                Kelas B
+                                                            </label>
 
-                                                        <label class="swal-radio-option">
-                                                            <input type="radio" name="kelas" value="C">
-                                                            Kelas C
-                                                        </label>
+                                                            <label class="swal-radio-option">
+                                                                <input type="radio" name="kelas" value="C">
+                                                                Kelas C
+                                                            </label>
 
-                                                        <label class="swal-radio-option">
-                                                            <input type="radio" name="kelas" value="D">
-                                                            Kelas D
-                                                        </label>
+                                                            <label class="swal-radio-option">
+                                                                <input type="radio" name="kelas" value="D">
+                                                                Kelas D
+                                                            </label>
 
-                                                    </div>
-                                                `,
+                                                        </div>
+                                                    `,
                     confirmButtonText: "Kirim",
                     showCancelButton: true,
 
@@ -1707,20 +1707,20 @@
                     icon: "warning",
                     title: "Latihan Belum Lengkap",
                     html: `
-                                                    <div style="text-align:center; line-height:1.6;">
+                            <div style="text-align:center; line-height:1.6;">
 
-                                                        Tapi, kamu belum menyelesaikan:
-                                                        <br><br>
+                                Tapi, kamu belum menyelesaikan:
+                                <br><br>
 
-                                                        ${!sudahLatihanDrag ? "<b>Ayo Berlatih</b><br>" : ""}
-                                                        ${!sudahAktivitas ? "<b>Aktivitas</b><br>" : ""}
+                                ${!sudahLatihanDrag ? "<b>Ayo Berlatih</b><br>" : ""}
+                                ${!sudahAktivitas ? "<b>Aktivitas</b><br>" : ""}
 
-                                                        <br>
+                                <br>
 
-                                                        Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
+                                Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
 
-                                                    </div>
-                                                `,
+                            </div>
+                        `,
                     showCancelButton: true,
                     confirmButtonText: "Tetap Lanjut",
                     cancelButtonText: "Kerjakan Dulu",
@@ -1788,6 +1788,23 @@
             currentStep = step;
 
             updatePagination();
+
+            // Kembali ke atas area konten
+            requestAnimationFrame(() => {
+                const content = document.querySelector("main.content");
+
+                if (content) {
+                    content.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                } else {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                }
+            });
         }
 
         function nextStep() {

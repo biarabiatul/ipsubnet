@@ -1690,40 +1690,40 @@
       const terkunci = soalTerkunci[indexSoal];
 
       let html = `
-                <div class="question-box">
-                  <p class="question-number">
-                    Soal ${indexSoal + 1} dari ${soal.length}
-                  </p>
-                  <p class="question-text">${data.q}</p>
-              `;
+                        <div class="question-box">
+                          <p class="question-number">
+                            Soal ${indexSoal + 1} dari ${soal.length}
+                          </p>
+                          <p class="question-text">${data.q}</p>
+                      `;
 
       if (data.tipe === "pilgan") {
         html += `<div class="options">`;
         data.opsi.forEach((o, i) => {
           html += `
-                    <label class="option ${terkunci ? 'locked' : ''}">
-                      <input
-                        type="radio"
-                        name="jawaban"
-                        value="${i}"
-                        ${terkunci ? 'disabled' : ''}
-                      >
-                      <span class="option-text">${o}</span>
-                    </label>
-                  `;
+                            <label class="option ${terkunci ? 'locked' : ''}">
+                              <input
+                                type="radio"
+                                name="jawaban"
+                                value="${i}"
+                                ${terkunci ? 'disabled' : ''}
+                              >
+                              <span class="option-text">${o}</span>
+                            </label>
+                          `;
         });
         html += `</div>`;
       }
 
       if (data.tipe === "isian") {
         html += `
-                  <input
-                    id="jawabanIsian"
-                    class="fill-input"
-                    placeholder="Jawaban"
-                    ${terkunci ? 'disabled' : ''}
-                  >
-                `;
+                          <input
+                            id="jawabanIsian"
+                            class="fill-input"
+                            placeholder="Jawaban"
+                            ${terkunci ? 'disabled' : ''}
+                          >
+                        `;
       }
 
       html += `</div>`;
@@ -1818,8 +1818,18 @@
 
       sudahSelesaiQuiz = true;
 
-      quizContainer.innerHTML = "";
+      // quizContainer.innerHTML = "";
       feedback.textContent = "";
+
+      let belum = [];
+
+      if (!sudahLatihanDrag) {
+        belum.push("Latihan Rumus");
+      }
+
+      if (!sudahLatihanKonversi) {
+        belum.push("Ayo Berlatih");
+      }
 
       const rows = document.querySelectorAll(".scratch-row[data-kunci]");
       let adaJawabanLatihan = false;
@@ -1834,22 +1844,27 @@
         });
       });
 
-      // JIKA BELUM MENGERJAKAN AYO BERLATIH 
-      if (!adaJawabanLatihan) {
+      if (belum.length > 0) {
 
         Swal.fire({
           icon: "warning",
-          title: "Aktivitas Selesai",
+          title: "Latihan Belum Lengkap",
           html: `
-                    Semua soal aktivitas telah dijawab dengan benar.<br><br>
-                    Namun kamu <b>belum mengerjakan bagian "Ayo Berlatih"</b>.<br><br>
-                    Latihan tersebut membantu memperkuat pemahaman konsep
-                    sebelum melanjutkan materi berikutnya.
-                  `,
+              Kamu telah menyelesaikan aktivitas.<br><br>
+
+              Namun kamu belum menyelesaikan:<br><br>
+
+              <b style="line-height:1.8;">
+                  ${belum.join("<br>")}
+              </b><br><br>
+
+              Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
+          `,
           showCancelButton: true,
           confirmButtonText: "Tetap Lanjut",
-          cancelButtonText: "Kembali ke Ayo Berlatih",
+          cancelButtonText: "Kerjakan Dulu",
           allowOutsideClick: false
+
         }).then((result) => {
 
           if (result.isConfirmed) {
@@ -1858,7 +1873,6 @@
 
           } else {
 
-            // scroll kembali ke latihan
             document.querySelector(".conversion-title").scrollIntoView({
               behavior: "smooth"
             });
@@ -1867,6 +1881,7 @@
 
         });
 
+        return;
       }
 
       // JIKA SUDAH MENGERJAKAN LATIHAN 
@@ -1879,7 +1894,7 @@
           confirmButtonText: "Lanjut",
           allowOutsideClick: false
         }).then(() => {
-          kirimProgressDesimal();
+          cekLatihanDesimal();
 
         });
 
@@ -2011,12 +2026,12 @@
           icon: "warning",
           title: "Latihan Belum Lengkap",
           html: `
-                    Tapi, kamu belum menyelesaikan:<br><br>
-                    <b style="line-height:1.8;">
-                      ${belum.join("<br>")}
-                    </b><br><br>
-                    Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
-                  `,
+                Tapi, kamu belum menyelesaikan:<br><br>
+                <b style="line-height:1.8;">
+                  ${belum.join("<br>")}
+                </b><br><br>
+                Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
+              `,
           showCancelButton: true,
           confirmButtonText: "Tetap Lanjut",
           cancelButtonText: "Kerjakan Dulu"
@@ -2041,11 +2056,11 @@
       Swal.fire({
         title: "Pertanyaan Pemahaman",
         html: `
-                  Sistem bilangan desimal memiliki basis berapa?<br><br>
-                  <button class="swal2-cancel swal2-styled" onclick="jawabPemahaman(2)">2</button>
-                  <button class="swal2-cancel swal2-styled" onclick="jawabPemahaman(8)">8</button>
-                  <button class="swal2-cancel swal2-styled" onclick="jawabPemahaman(10)">10</button>
-                `,
+                          Sistem bilangan desimal memiliki basis berapa?<br><br>
+                          <button class="swal2-cancel swal2-styled" onclick="jawabPemahaman(2)">2</button>
+                          <button class="swal2-cancel swal2-styled" onclick="jawabPemahaman(8)">8</button>
+                          <button class="swal2-cancel swal2-styled" onclick="jawabPemahaman(10)">10</button>
+                        `,
         showConfirmButton: false,
         allowOutsideClick: false
       });
@@ -2097,6 +2112,7 @@
     const totalStep = 3;
 
     function showStep(step) {
+
       document.querySelectorAll(".step-section").forEach(el => {
         el.classList.remove("active");
       });
@@ -2104,6 +2120,16 @@
       document.getElementById("step" + step).classList.add("active");
 
       updatePagination();
+
+      // scroll ke atas area konten
+      const content = document.querySelector("main.content");
+
+      if (content) {
+        content.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }
     }
 
     function nextStep() {
@@ -2289,6 +2315,7 @@
           // reset drop box
           document.querySelectorAll('.drop-box').forEach(box => {
             box.innerHTML = "";
+            box.classList.remove("correct", "wrong", "filled");
           });
 
           // reset input

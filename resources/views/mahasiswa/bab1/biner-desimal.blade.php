@@ -2060,7 +2060,7 @@
         </div>
     </div>
 
-    <div class="step-pagination">
+    <div class="step-pagination" id="stepPagination" style="display:none;">
 
         <button class="page-btn nav-arrow" onclick="prevStep()">
             <i class="bi bi-chevron-left"></i>
@@ -2077,7 +2077,7 @@
             3
         </button>
 
-        <button class="page-btn nav-arrow" onclick="nextStep()" id="nextStepBtn" disabled>
+        <button class="page-btn nav-arrow" onclick="nextStep()" id="nextStepBtn">
             <i class="bi bi-chevron-right"></i>
         </button>
 
@@ -2110,6 +2110,7 @@
 
             pemantikSelesai = true;
 
+            document.getElementById("stepPagination").style.display = "flex";
             document.getElementById("stepBtn2").style.display = "inline-block";
             document.getElementById("stepBtn3").style.display = "inline-block";
 
@@ -2151,19 +2152,19 @@
             const data = soal[indexSoal];
 
             let html = `<div class="question-box"> <p class="question-number"> Soal ${indexSoal + 1} dari ${soal.length}</p>
-                                                                                            <p class="question-text">${data.q}</p>
-                                                                                            `;
+                                                                                                                        <p class="question-text">${data.q}</p>
+                                                                                                                        `;
 
             if (data.tipe === "pilgan") {
                 html += `<div class="options">`;
                 data.opsi.forEach((o, i) => {
                     const disabled = jawabanBenar[indexSoal] ? "disabled" : "";
                     html += `
-                                                                                                        <label class="option ${jawabanBenar[indexSoal] ? 'locked' : ''}">
-                                                                                                            <input type="radio" name="jawaban" value="${i}" ${disabled}>
-                                                                                                            <span class="option-text">${o}</span>
-                                                                                                        </label>
-                                                                                                    `;
+                                <label class="option ${jawabanBenar[indexSoal] ? 'locked' : ''}">
+                                    <input type="radio" name="jawaban" value="${i}" ${disabled}>
+                                    <span class="option-text">${o}</span>
+                                </label>
+                            `;
                 });
                 html += `</div>`;
             }
@@ -2171,8 +2172,8 @@
             if (data.tipe === "isian") {
                 const disabled = jawabanBenar[indexSoal] ? "disabled" : "";
                 html += `
-                                                                                                    <input id="jawabanIsian" class="fill-input" placeholder="Jawaban" ${disabled}>
-                                                                                                `;
+                            <input id="jawabanIsian" class="fill-input" placeholder="Jawaban" ${disabled}>
+                        `;
             }
 
             html += `</div>`;
@@ -2236,7 +2237,9 @@
                 feedback.textContent = "Jawaban benar";
                 feedback.style.color = "#15803d";
 
-                document.querySelectorAll("input").forEach(el => el.disabled = true);
+                document.querySelectorAll("#quizContainer input").forEach(el => {
+                    el.disabled = true;
+                });
                 nextBtn.disabled = false;
             } else {
                 feedback.textContent = "Jawaban salah, silakan coba kembali";
@@ -2250,13 +2253,18 @@
             indexSoal++;
 
             if (indexSoal < soal.length) {
+
                 renderSoal();
+
             } else {
 
-                // TAMBAHAN DI SINI
-                if (jawabanBenar.every(j => j === true)) {
+                if (jawabanBenar.every(j => j)) {
                     aktivitasSelesai = true;
                 }
+
+                // kembali ke soal terakhir
+                indexSoal = soal.length - 1;
+                renderSoal();
 
                 tampilkanSelesai();
             }
@@ -2264,7 +2272,7 @@
 
         function tampilkanSelesai() {
 
-            quizContainer.innerHTML = "";
+            // quizContainer.innerHTML = "";
             feedback.textContent = "";
 
             const inputs = document.querySelectorAll(".answer-input");
@@ -2282,7 +2290,7 @@
                     icon: "warning",
                     title: "Aktivitas Selesai",
                     html: `
-                                                                                                    Semua soal aktivitas telah dijawab dengan benar.<br><br>Namun kamu belum menyelesaikan:<br><br><b>${belum.join("<br>")}</b><br><br>Selesaikan terlebih dahulu untuk pemahaman maksimal.`,
+                    Semua soal aktivitas telah dijawab dengan benar.<br><br>Namun kamu belum menyelesaikan:<br><br><b>${belum.join("<br>")}</b><br><br>Selesaikan terlebih dahulu untuk pemahaman maksimal.`,
 
                     showCancelButton: true,
                     confirmButtonText: "Tetap Lanjut",
@@ -2535,7 +2543,7 @@
                     icon: "warning",
                     title: "Latihan Belum Lengkap",
                     html: `
-                                                                                                        Tapi, kamu belum menyelesaikan:<br><br><b>${belum.join("<br>")}</b><br><br>Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.`,
+                                                                                                                                    Tapi, kamu belum menyelesaikan:<br><br><b>${belum.join("<br>")}</b><br><br>Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.`,
 
                     showCancelButton: true,
                     confirmButtonText: "Tetap Lanjut",
@@ -2757,6 +2765,7 @@
         const totalStep = 3;
 
         function showStep(step) {
+
             document.querySelectorAll(".step-section").forEach(el => {
                 el.classList.remove("active");
             });
@@ -2764,6 +2773,8 @@
             document.getElementById("step" + step).classList.add("active");
 
             updatePagination();
+
+            scrollKeAtas();
         }
 
         function nextStep() {
@@ -2983,6 +2994,13 @@
 
             if (data.selesai) {
 
+                document.getElementById("stepPagination").style.display = "flex";
+
+                document.getElementById("stepBtn2").style.display = "inline-block";
+                document.getElementById("stepBtn3").style.display = "inline-block";
+
+                pemantikSelesai = true;
+
                 console.log("SUDAH PERNAH SELESAI");
 
                 // LANGSUNG BUKA MATERI
@@ -3077,6 +3095,13 @@
             }
 
         });
+
+        function scrollKeAtas() {
+            document.querySelector("main.content").scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
     </script>
 
     <!-- MODAL PETUNJUK -->

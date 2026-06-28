@@ -91,11 +91,11 @@
                 <h3 class="hero-subtitle">Media Pembelajaran Interaktif</h3>
 
                 <h1 class="hero-title">
-                    IP <i>Addressing</i> & <i>Subnetting</i>
+                    <i>IP Addressing</i> & <i>Subnetting</i>
                 </h1>
 
                 <p class="hero-desc mt-3">
-                    Media pembelajaran ini dirancang untuk membantu mahasiswa memahami konsep dasar <i>IP Addressing</i> dan <i>Subnetting</i>, mulai dari pengalamatan IP, subnet mask, CIDR, hingga perhitungan <i>subnetting</i> dan VLSM dalam jaringan komputer.
+                    Media pembelajaran ini dirancang untuk membantu mahasiswa memahami konsep dasar <i>IP Addressing</i> dan <i>Subnetting</i>, mulai dari pengalamatan IP, <i>subnet mask</i>, CIDR, hingga perhitungan <i>subnetting</i> dan VLSM dalam jaringan komputer.
                 </p>
 
                 <a href="/login" class="btn-main">

@@ -779,31 +779,31 @@
 
                         <!-- INPUT + TOMBOL -->
                         <div style="
-                                                        display:flex;
-                                                        justify-content:center;
-                                                        gap:10px;
-                                                        margin-top:10px;
-                                                        flex-wrap:wrap;
-                                                    ">
+                                                                    display:flex;
+                                                                    justify-content:center;
+                                                                    gap:10px;
+                                                                    margin-top:10px;
+                                                                    flex-wrap:wrap;
+                                                                ">
                             <input type="text" id="ipUser" placeholder="Contoh: 192.168.1.17" style="
-                                                            padding:8px 12px;
-                                                            width:220px;
-                                                            border:1.5px solid #c8b6a6;
-                                                            border-radius:6px;
-                                                            font-size:14px;
-                                                            font-family:Fira Sans;
-                                                        ">
+                                                                        padding:8px 12px;
+                                                                        width:220px;
+                                                                        border:1.5px solid #c8b6a6;
+                                                                        border-radius:6px;
+                                                                        font-size:14px;
+                                                                        font-family:Fira Sans;
+                                                                    ">
 
                             <button onclick="cekIP()" style="
-                                                            background:#89471e;
-                                                            color:white;
-                                                            border:none;
-                                                            padding:8px 18px;
-                                                            border-radius:999px;
-                                                            font-weight:600;
-                                                            cursor:pointer;
-                                                            font-family:Fira Sans;
-                                                        ">
+                                                                        background:#89471e;
+                                                                        color:white;
+                                                                        border:none;
+                                                                        padding:8px 18px;
+                                                                        border-radius:999px;
+                                                                        font-weight:600;
+                                                                        cursor:pointer;
+                                                                        font-family:Fira Sans;
+                                                                    ">
                                 Kirim
                             </button>
                         </div>
@@ -850,7 +850,7 @@
         </div>
     </div>
 
-    <div class="step-pagination">
+    <div class="step-pagination" id="stepPagination" style="display:none;">
 
         <button class="page-btn nav-arrow" onclick="prevStep()">
             <i class="bi bi-chevron-left"></i>
@@ -913,6 +913,7 @@
             feedback.style.color = "#15803d";
 
             pemantikSudahDijawab = true;
+            document.getElementById("stepPagination").style.display = "flex";
 
             document.getElementById("stepBtn2").style.display = "inline-block";
 
@@ -1005,23 +1006,23 @@
             const terkunci = soalTerkunci[indexSoal];
 
             let html = `
-                                            <div class="question-box">
-                                                <p class="question-number">
-                                                Soal ${indexSoal + 1} dari ${soal.length}
-                                                </p>
-                                                <p class="question-text">${data.q}</p>
-                                            `;
+                                                        <div class="question-box">
+                                                            <p class="question-number">
+                                                            Soal ${indexSoal + 1} dari ${soal.length}
+                                                            </p>
+                                                            <p class="question-text">${data.q}</p>
+                                                        `;
 
             // PILGAN
             if (data.tipe === "pilgan") {
                 html += `<div class="options">`;
                 data.opsi.forEach((o, i) => {
                     html += `
-                                                <label class="option ${terkunci ? 'locked' : ''}">
-                                                    <input type="radio" name="jawaban" value="${i}" ${terkunci ? 'disabled' : ''}>
-                                                    <span class="option-text">${o}</span>
-                                                </label>
-                                                `;
+                                                            <label class="option ${terkunci ? 'locked' : ''}">
+                                                                <input type="radio" name="jawaban" value="${i}" ${terkunci ? 'disabled' : ''}>
+                                                                <span class="option-text">${o}</span>
+                                                            </label>
+                                                            `;
                 });
                 html += `</div>`;
             }
@@ -1029,28 +1030,28 @@
             // ===== ISIAN =====
             if (data.tipe === "isian") {
                 html += `
-                                                <input
-                                                type="text"
-                                                id="jawabanIsian"
-                                                placeholder="Contoh: 1,2,3"
-                                                style="
-                                                    padding:8px 12px;
-                                                    width:200px;
-                                                    border:1.5px solid #c8b6a6;
-                                                    border-radius:6px;
-                                                    font-size:14px;
-                                                    display:block;
-                                                    margin:10px auto;
-                                                    text-align:center;
-                                                "
-                                                ${terkunci ? 'disabled' : ''}
-                                                >
-                                                <div style="text-align:center; margin-top:10px;">
-                                                <button class="next-btn" onclick="cekJawabanIsian()">
-                                                    Cek Jawaban
-                                                </button>
-                                                </div>
-                                            `;
+                                                            <input
+                                                            type="text"
+                                                            id="jawabanIsian"
+                                                            placeholder="Contoh: 1,2,3"
+                                                            style="
+                                                                padding:8px 12px;
+                                                                width:200px;
+                                                                border:1.5px solid #c8b6a6;
+                                                                border-radius:6px;
+                                                                font-size:14px;
+                                                                display:block;
+                                                                margin:10px auto;
+                                                                text-align:center;
+                                                            "
+                                                            ${terkunci ? 'disabled' : ''}
+                                                            >
+                                                            <div style="text-align:center; margin-top:10px;">
+                                                            <button class="next-btn" onclick="cekJawabanIsian()">
+                                                                Cek Jawaban
+                                                            </button>
+                                                            </div>
+                                                        `;
             }
 
             html += `</div>`;
@@ -1153,13 +1154,13 @@
                         icon: "warning",
                         title: "Aktivitas Selesai",
                         html: `
-                                                Semua soal aktivitas telah dijawab dengan benar.<br><br>
-                                                Namun kamu <b>belum mengisi alamat IP pada bagian "Ayo Berlatih"</b>.<br><br>
-                                                Jika ingin lanjut ke materi <b>Kelas IP Address</b>, silakan klik tombol <b>Halaman Selanjutnya</b>.
-                                            `,
+                                        Semua soal aktivitas telah dijawab dengan benar.<br><br>
+                                        Namun kamu <b>belum mengisi alamat IP pada bagian "Ayo Berlatih"</b>.<br><br>
+                                        Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
+                                    `,
                         showCancelButton: true,
-                        confirmButtonText: "Lanjut",
-                        cancelButtonText: "Isi Alamat IP",
+                        confirmButtonText: "Tetap Lanjut",
+                        cancelButtonText: "Kerjakan Dulu",
                         reverseButtons: true
                     }).then((result) => {
 
@@ -1170,7 +1171,7 @@
                         }
 
                         if (result.isConfirmed) {
-                            // tetap di halaman ini
+                            window.location.href = "/bab2/kelas-ip";
                         }
 
                     });
@@ -1178,8 +1179,6 @@
 
                 // jika sudah mengisi IP
                 else {
-
-
 
                     Swal.fire({
                         icon: "success",
@@ -1222,22 +1221,22 @@
                 Swal.fire({
                     title: "Cek Pemahaman",
                     html: `
-                                                    <div style="text-align:center; margin-bottom:12px; font-size:16px;">
-                                                    Apa fungsi utama IP Address?</div>
-                                                    <div class="swal-radio-group">
-                                                    <label class="swal-radio-option">
-                                                    <input type="radio" name="ip" value="a">
-                                                    Sebagai alamat unik perangkat dalam jaringan</label>
-                                                    <label class="swal-radio-option">
-                                                    <input type="radio" name="ip" value="b">
-                                                    Untuk mempercepat koneksi internet</label>
-                                                    <label class="swal-radio-option">
-                                                    <input type="radio" name="ip" value="c">
-                                                    Untuk menyimpan data di komputer</label>
-                                                    <label class="swal-radio-option">
-                                                    <input type="radio" name="ip" value="d">
-                                                    Untuk menghubungkan listrik ke perangkat</label></div>
-                                                    `,
+                                                                <div style="text-align:center; margin-bottom:12px; font-size:16px;">
+                                                                Apa fungsi utama IP Address?</div>
+                                                                <div class="swal-radio-group">
+                                                                <label class="swal-radio-option">
+                                                                <input type="radio" name="ip" value="a">
+                                                                Sebagai alamat unik perangkat dalam jaringan</label>
+                                                                <label class="swal-radio-option">
+                                                                <input type="radio" name="ip" value="b">
+                                                                Untuk mempercepat koneksi internet</label>
+                                                                <label class="swal-radio-option">
+                                                                <input type="radio" name="ip" value="c">
+                                                                Untuk menyimpan data di komputer</label>
+                                                                <label class="swal-radio-option">
+                                                                <input type="radio" name="ip" value="d">
+                                                                Untuk menghubungkan listrik ke perangkat</label></div>
+                                                                `,
                     showCancelButton: true,
                     confirmButtonText: "Kirim",
 
@@ -1290,16 +1289,16 @@
                     icon: "warning",
                     title: "Latihan Belum Lengkap",
                     html: `
-                                                    <div style="text-align:center; line-height:1.6;">
-                                                    Tapi, kamu belum menyelesaikan:<br><br>
+                                                                <div style="text-align:center; line-height:1.6;">
+                                                                Tapi, kamu belum menyelesaikan:<br><br>
 
-                                                    ${!latihanIPSelesai ? "<b>Ayo Berlatih</b><br>" : ""}
-                                                    ${!aktivitasSelesai ? "<b>Aktivitas</b><br>" : ""}
+                                                                ${!latihanIPSelesai ? "<b>Ayo Berlatih</b><br>" : ""}
+                                                                ${!aktivitasSelesai ? "<b>Aktivitas</b><br>" : ""}
 
-                                                    <br>
-                                                    Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
-                                                </div>
-                                            `,
+                                                                <br>
+                                                                Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
+                                                            </div>
+                                                        `,
                     showCancelButton: true,
                     confirmButtonText: "Tetap Lanjut",
                     cancelButtonText: "Kerjakan Dulu",
@@ -1410,14 +1409,14 @@
             const binaryIP = hasil.join(".");
 
             document.getElementById("hasilBiner").innerHTML = `
-                <div class="result-info">
-                    ✓ Hasil konversi alamat IP ${octets.join(".")} ke bentuk biner:
-                </div>
+                            <div class="result-info">
+                                ✓ Hasil konversi alamat IP ${octets.join(".")} ke bentuk biner:
+                            </div>
 
-                <div class="binary-result">
-                    ${binaryIP}
-                </div>
-            `;
+                            <div class="binary-result">
+                                ${binaryIP}
+                            </div>
+                        `;
         }
 
         // pagination
@@ -1426,6 +1425,7 @@
 
         function showStep(step) {
             currentStep = step;
+
             document.querySelectorAll(".step-section").forEach(el => {
                 el.classList.remove("active");
             });
@@ -1433,6 +1433,15 @@
             document.getElementById("step" + step).classList.add("active");
 
             updatePagination();
+
+            const content = document.querySelector("main.content");
+
+            if (content) {
+                content.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            }
         }
 
         function nextStep() {
@@ -1484,6 +1493,12 @@
                         aktivitasSelesai = true;
                         latihanIPSelesai = true;
                         sudahLulusPemahaman = true;
+
+                        pemantikSudahDijawab = true;
+
+                        // tampilkan pagination
+                        document.getElementById("stepPagination").style.display = "flex";
+                        document.getElementById("stepBtn2").style.display = "inline-block";
 
                         // tampilkan materi langsung
                         document.getElementById("materiIP").style.display = "block";

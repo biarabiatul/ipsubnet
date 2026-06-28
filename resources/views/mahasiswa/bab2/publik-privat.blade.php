@@ -573,7 +573,7 @@
         <strong>Alamat <i>IP</i> publik</strong> adalah alamat yang digunakan untuk berkomunikasi secara langsung di
         internet dan bersifat unik secara global, sehingga setiap perangkat <strong>tidak boleh memiliki alamat yang
           sama</strong>. Alamat <i>IP</i> publik biasanya digunakan oleh <i>server</i>, <i>website</i>, atau perangkat
-        yang terhubung langsung ke internet, dan diperoleh dari <i>Internet Service Provider</i> (<i>ISP</i>).
+        yang terhubung langsung ke internet, dan diperoleh dari <i>Internet Service Provider</i> (ISP).
 
         <br>
         <div class="soft-box">
@@ -628,16 +628,18 @@
             <th style="border:1px solid #d6c3b2; padding:8px;">Rentang IP Privat</th>
           </tr>
           <tr>
-            <td style="border:1px solid #d6c3b2; padding:8px;">A</td>
-            <td style="border:1px solid #d6c3b2; padding:8px;">10.0.0.0 – 10.255.255.255</td>
+            <td style="border:1px solid #d6c3b2; padding:8px; text-align:center;">A</td>
+            <td style="border:1px solid #d6c3b2; padding:8px; text-align:center;">10.0.0.0 – 10.255.255.255</td>
           </tr>
+
           <tr>
-            <td style="border:1px solid #d6c3b2; padding:8px;">B</td>
-            <td style="border:1px solid #d6c3b2; padding:8px;">172.16.0.0 – 172.31.255.255</td>
+            <td style="border:1px solid #d6c3b2; padding:8px; text-align:center;">B</td>
+            <td style="border:1px solid #d6c3b2; padding:8px; text-align:center;">172.16.0.0 – 172.31.255.255</td>
           </tr>
+
           <tr>
-            <td style="border:1px solid #d6c3b2; padding:8px;">C</td>
-            <td style="border:1px solid #d6c3b2; padding:8px;">192.168.0.0 – 192.168.255.255</td>
+            <td style="border:1px solid #d6c3b2; padding:8px; text-align:center;">C</td>
+            <td style="border:1px solid #d6c3b2; padding:8px; text-align:center;">192.168.0.0 – 192.168.255.255</td>
           </tr>
         </table>
 
@@ -820,34 +822,34 @@
         Swal.fire({
           title: "Cek Pemahaman",
           html: `
-                        <div style="text-align:center; margin-bottom:12px; font-size:16px;">
-                            Manakah alamat IP yang <b>bukan termasuk IP privat</b>?
-                        </div>
+                            <div style="text-align:center; margin-bottom:12px; font-size:16px;">
+                                Manakah alamat IP yang <b>bukan termasuk IP privat</b>?
+                            </div>
 
-                        <div class="swal-radio-group">
+                            <div class="swal-radio-group">
 
-                            <label class="swal-radio-option">
-                                <input type="radio" name="jawaban" value="a">
-                                10.10.5.1
-                            </label>
+                                <label class="swal-radio-option">
+                                    <input type="radio" name="jawaban" value="a">
+                                    10.10.5.1
+                                </label>
 
-                            <label class="swal-radio-option">
-                                <input type="radio" name="jawaban" value="b">
-                                172.16.8.2
-                            </label>
+                                <label class="swal-radio-option">
+                                    <input type="radio" name="jawaban" value="b">
+                                    172.16.8.2
+                                </label>
 
-                            <label class="swal-radio-option">
-                                <input type="radio" name="jawaban" value="c">
-                                192.168.2.100
-                            </label>
+                                <label class="swal-radio-option">
+                                    <input type="radio" name="jawaban" value="c">
+                                    192.168.2.100
+                                </label>
 
-                            <label class="swal-radio-option">
-                                <input type="radio" name="jawaban" value="d">
-                                8.8.8.8
-                            </label>
+                                <label class="swal-radio-option">
+                                    <input type="radio" name="jawaban" value="d">
+                                    8.8.8.8
+                                </label>
 
-                        </div>
-                    `,
+                            </div>
+                        `,
           showCancelButton: true,
           confirmButtonText: "Kirim",
 
@@ -911,13 +913,13 @@
           icon: "warning",
           title: "Latihan Belum Lengkap",
           html: `
-                      <div style="text-align:center; line-height:1.6;">
-                        Tapi, kamu belum menyelesaikan:<br><br>
-                        ${belum}
-                        <br>
-                        Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
-                      </div>
-                    `,
+                <div style="text-align:center; line-height:1.6;">
+                  Tapi, kamu belum menyelesaikan:<br><br>
+                  ${belum}
+                  <br>
+                  Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
+                </div>
+              `,
           showCancelButton: true,
           confirmButtonText: "Tetap Lanjut",
           cancelButtonText: "Kerjakan Dulu",
@@ -979,11 +981,11 @@
 
         data.forEach(item => {
           container.innerHTML += `
-                          <div class="latihan-row">
-                            <span class="ip-text">${item.soal}</span>
-                            <div class="drop-box" data-answer="${item.jawaban_benar}"></div>
-                          </div>
-                        `;
+                              <div class="latihan-row">
+                                <span class="ip-text">${item.soal}</span>
+                                <div class="drop-box" data-answer="${item.jawaban_benar}"></div>
+                              </div>
+                            `;
         });
 
         initDragDrop(); // WAJIB
@@ -1062,50 +1064,50 @@
       const terkunci = statusTerkunci[indexSoal];
 
       let html = `
-                  <div class="question-box">
-                      <p class="question-number">
-                          Soal ${indexSoal + 1} dari ${soal.length}
-                      </p>
+                      <div class="question-box">
+                          <p class="question-number">
+                              Soal ${indexSoal + 1} dari ${soal.length}
+                          </p>
 
-                      <div class="question-text">
-                          ${data.q}
-                      </div>
-              `;
+                          <div class="question-text">
+                              ${data.q}
+                          </div>
+                  `;
 
       if (data.tipe === "pilgan") {
         html += `<div class="options">`;
         data.opsi.forEach((o, i) => {
           html += `
-                        <label class="option">
+                            <label class="option">
 
-                            <input 
-                                type="radio"
-                                name="jawaban"
-                                value="${i}"
-                                ${jawabanUser[indexSoal] == i ? "checked" : ""}
-                                ${terkunci ? "disabled" : ""}
-                            >
+                                <input 
+                                    type="radio"
+                                    name="jawaban"
+                                    value="${i}"
+                                    ${jawabanUser[indexSoal] == i ? "checked" : ""}
+                                    ${terkunci ? "disabled" : ""}
+                                >
 
-                            <span class="option-text">
-                                ${o}
-                            </span>
+                                <span class="option-text">
+                                    ${o}
+                                </span>
 
-                        </label>
-                    `;
+                            </label>
+                        `;
         });
         html += `</div>`;
       }
 
       if (data.tipe === "isian") {
         html += `
-                      <input
-                          id="jawabanIsian"
-                          class="fill-input"
-                          value="${jawabanUser[indexSoal] ?? ""}"
-                          ${terkunci ? "disabled" : ""}
-                          placeholder="Jawaban"
-                      >
-                  `;
+                          <input
+                              id="jawabanIsian"
+                              class="fill-input"
+                              value="${jawabanUser[indexSoal] ?? ""}"
+                              ${terkunci ? "disabled" : ""}
+                              placeholder="Jawaban"
+                          >
+                      `;
       }
 
       html += `</div>`;
@@ -1220,6 +1222,25 @@
       currentStep = step;
 
       updatePagination();
+
+      // kembali ke atas halaman
+      requestAnimationFrame(() => {
+
+        const content = document.querySelector("main.content");
+
+        if (content) {
+          content.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        } else {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        }
+
+      });
     }
 
     function nextStep() {
@@ -1284,9 +1305,9 @@
           icon: "success",
           title: "Benar Semua!",
           html: `
-                      Latihan berhasil diselesaikan.<br><br>
-                      Mau mengulang latihan atau lanjut?
-                    `,
+                          Latihan berhasil diselesaikan.<br><br>
+                          Mau mengulang latihan atau lanjut?
+                        `,
           showCancelButton: true,
           confirmButtonText: "Ulangi",
           cancelButtonText: "Lanjut",

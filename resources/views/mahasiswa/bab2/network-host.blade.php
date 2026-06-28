@@ -703,6 +703,46 @@
             }
 
         }
+
+        #kelasTabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+
+            border-bottom: 2px solid #ddd;
+        }
+
+        #kelasTabs .nav-item {
+            margin-bottom: -2px;
+        }
+
+        #kelasTabs .nav-link {
+
+            border: none;
+            background: transparent;
+
+            color: #9b4d09;
+            font-weight: 600;
+
+            padding: 10px 25px;
+
+            border-radius: 10px 10px 0 0;
+
+            transition: .25s;
+        }
+
+        #kelasTabs .nav-link:hover {
+            background: #f6ede3;
+        }
+
+        #kelasTabs .nav-link.active {
+            background: #b45a08;
+            color: white;
+        }
     </style>
 
     <!-- NETWORK ID & HOST ID -->
@@ -820,17 +860,34 @@
                 Kelas alamat <i>IP</i> tidak hanya menentukan rentang alamat yang dapat digunakan, tetapi juga menentukan
                 pembagian antara <i>Network ID</i> dan <i>Host ID</i>. Setiap kelas <i>IP</i> memiliki pembagian <i>Network
                     ID</i> dan <i>Host ID</i> yang berbeda. Untuk memahami perbedaannya, pilih salah satu kelas <i>IP</i>
-                dengan cara klik kelas IP di bawah ini, kemudian perhatikan pembagian <i>bit</i> antara <i>Network ID</i> dan <i>Host
+                dengan cara klik kelas IP di bawah ini, kemudian perhatikan pembagian <i>bit</i> antara <i>Network ID</i>
+                dan <i>Host
                     ID</i> yang ditampilkan.
 
                 <br><br>
                 <div class="interactive-ip">
 
-                    <div class="ip-class-buttons">
-                        <button class="class-btn active" onclick="setClass('A', this)">Kelas A</button>
-                        <button class="class-btn" onclick="setClass('B', this)">Kelas B</button>
-                        <button class="class-btn" onclick="setClass('C', this)">Kelas C</button>
-                    </div>
+                    <ul class="nav nav-tabs justify-content-center mb-4" id="kelasTabs">
+
+                        <li class="nav-item">
+                            <button class="nav-link" onclick="setClass('A', this)">
+                                Kelas A
+                            </button>
+                        </li>
+
+                        <li class="nav-item">
+                            <button class="nav-link" onclick="setClass('B', this)">
+                                Kelas B
+                            </button>
+                        </li>
+
+                        <li class="nav-item">
+                            <button class="nav-link active" onclick="setClass('C', this)">
+                                Kelas C
+                            </button>
+                        </li>
+
+                    </ul>
 
                     <div class="bit-visual">
                         <div id="netBar" class="net-bar">Network</div>
@@ -890,13 +947,13 @@
                     </ol>
 
                     <div style="
-                                margin-top:14px;
-                                padding:10px 14px;
-                                background:#fef3c7;
-                                border:1px solid #f59e0b;
-                                font-weight:700;
-                                display:inline-block;
-                                border-radius:6px;">
+                                                                    margin-top:14px;
+                                                                    padding:10px 14px;
+                                                                    background:#fef3c7;
+                                                                    border:1px solid #f59e0b;
+                                                                    font-weight:700;
+                                                                    display:inline-block;
+                                                                    border-radius:6px;">
 
                         <i class="bi bi-check-circle-fill" style="color:#16a34a;"></i>
                         Network ID = <strong>192.10.10</strong> &nbsp; | &nbsp;
@@ -1098,36 +1155,36 @@
                 Swal.fire({
                     title: "Cek Pemahaman",
                     html: `
-                            <div style="text-align:center; margin-bottom:12px; font-size:16px;">
-                                Manakah Network ID dari IP berikut?
-                                <br><br>
-                                <b>192.168.10.5</b>
-                            </div>
+                                                                <div style="text-align:center; margin-bottom:12px; font-size:16px;">
+                                                                    Manakah Network ID dari IP berikut?
+                                                                    <br><br>
+                                                                    <b>192.168.10.5</b>
+                                                                </div>
 
-                            <div class="swal-radio-group">
+                                                                <div class="swal-radio-group">
 
-                                <label class="swal-radio-option">
-                                    <input type="radio" name="jawaban" value="a">
-                                    192
-                                </label>
+                                                                    <label class="swal-radio-option">
+                                                                        <input type="radio" name="jawaban" value="a">
+                                                                        192
+                                                                    </label>
 
-                                <label class="swal-radio-option">
-                                    <input type="radio" name="jawaban" value="b">
-                                    192.168
-                                </label>
+                                                                    <label class="swal-radio-option">
+                                                                        <input type="radio" name="jawaban" value="b">
+                                                                        192.168
+                                                                    </label>
 
-                                <label class="swal-radio-option">
-                                    <input type="radio" name="jawaban" value="c">
-                                    192.168.10
-                                </label>
+                                                                    <label class="swal-radio-option">
+                                                                        <input type="radio" name="jawaban" value="c">
+                                                                        192.168.10
+                                                                    </label>
 
-                                <label class="swal-radio-option">
-                                    <input type="radio" name="jawaban" value="d">
-                                    10.5
-                                </label>
+                                                                    <label class="swal-radio-option">
+                                                                        <input type="radio" name="jawaban" value="d">
+                                                                        10.5
+                                                                    </label>
 
-                            </div>
-                        `,
+                                                                </div>
+                                                            `,
                     confirmButtonText: "Kirim",
                     showCancelButton: true,
 
@@ -1192,11 +1249,11 @@
                     icon: "warning",
                     title: "Latihan Belum Lengkap",
                     html: `
-                                Tapi, kamu belum menyelesaikan:<br><br>
-                                ${belum}
-                                <br>
-                                Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
-                            `,
+                                                                    Tapi, kamu belum menyelesaikan:<br><br>
+                                                                    ${belum}
+                                                                    <br>
+                                                                    Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
+                                                                `,
                     showCancelButton: true,
                     confirmButtonText: "Tetap Lanjut",
                     cancelButtonText: "Kerjakan Dulu",
@@ -1412,7 +1469,20 @@
                 promises.push(request);
             });
 
+            // tampilkan loading
+            Swal.fire({
+                title: "Memeriksa Jawaban...",
+                text: "Mohon tunggu sebentar.",
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
             Promise.all(promises).then(() => {
+
+                // tutup loading
+                Swal.close();
 
                 if (totalBenar === totalSoal && totalSoal > 0) {
 
@@ -1542,46 +1612,46 @@
             const terkunci = soalTerkunci[indexSoal];
 
             let html = `
-                        <div class="question-box">
-                            <p class="question-number">
-                                Soal ${indexSoal + 1} dari ${soal.length}
-                            </p>
+                                                            <div class="question-box">
+                                                                <p class="question-number">
+                                                                    Soal ${indexSoal + 1} dari ${soal.length}
+                                                                </p>
 
-                            <p class="question-text">
-                                ${data.q}
-                            </p>
-                    `;
+                                                                <p class="question-text">
+                                                                    ${data.q}
+                                                                </p>
+                                                        `;
 
             if (data.tipe === "pilgan") {
                 html += `<div class="options">`;
                 data.opsi.forEach((o, i) => {
                     html += `
-                                <label class="option ${terkunci ? 'locked' : ''}">
-                                    <input 
-                                        type="radio" 
-                                        name="jawaban" 
-                                        value="${i}" 
-                                        ${terkunci ? 'disabled' : ''}
-                                    >
+                                                                    <label class="option ${terkunci ? 'locked' : ''}">
+                                                                        <input 
+                                                                            type="radio" 
+                                                                            name="jawaban" 
+                                                                            value="${i}" 
+                                                                            ${terkunci ? 'disabled' : ''}
+                                                                        >
 
-                                    <span class="option-text">
-                                        ${o}
-                                    </span>
-                                </label>
-                            `;
+                                                                        <span class="option-text">
+                                                                            ${o}
+                                                                        </span>
+                                                                    </label>
+                                                                `;
                 });
                 html += `</div>`;
             }
 
             if (data.tipe === "isian") {
                 html += `
-                            <input
-                                id="jawabanIsian"
-                                class="fill-input"
-                                placeholder="Jawaban"
-                                ${terkunci ? 'disabled' : ''}
-                            >
-                        `;
+                                                                <input
+                                                                    id="jawabanIsian"
+                                                                    class="fill-input"
+                                                                    placeholder="Jawaban"
+                                                                    ${terkunci ? 'disabled' : ''}
+                                                                >
+                                                            `;
             }
 
             html += `</div>`;
@@ -1774,11 +1844,11 @@
                     icon: "warning",
                     title: "Aktivitas Selesai",
                     html: `
-                                Semua soal aktivitas telah dijawab dengan benar.<br><br>
+                                                                    Semua soal aktivitas telah dijawab dengan benar.<br><br>
 
-                                Namun kamu 
-                                <b>belum mengerjakan bagian "Ayo Berlatih"</b>.<br><br>
-                            `,
+                                                                    Namun kamu 
+                                                                    <b>belum mengerjakan bagian "Ayo Berlatih"</b>.<br><br>
+                                                                `,
                     showCancelButton: true,
                     confirmButtonText: "Tetap Lanjut",
                     cancelButtonText: "Kembali ke Latihan"
@@ -1858,13 +1928,20 @@
         }
 
 
-        function setClass(type) {
+        function setClass(type, btn) {
+
+            // ganti tab aktif
+            document.querySelectorAll("#kelasTabs .nav-link")
+                .forEach(tab => tab.classList.remove("active"));
+
+            btn.classList.add("active");
 
             const net = document.getElementById("netBar");
             const host = document.getElementById("hostBar");
             const desc = document.getElementById("descText");
 
             if (type === "A") {
+
                 net.style.flex = "1";
                 host.style.flex = "3";
 
@@ -1875,6 +1952,7 @@
             }
 
             if (type === "B") {
+
                 net.style.flex = "2";
                 host.style.flex = "2";
 
@@ -1885,6 +1963,7 @@
             }
 
             if (type === "C") {
+
                 net.style.flex = "3";
                 host.style.flex = "1";
 
@@ -1896,7 +1975,10 @@
         }
 
         // default awal
-        setClass("C");
+        setClass(
+            "A",
+            document.querySelector("#kelasTabs .nav-link.active")
+        );
 
         let currentStep = 1;
         const totalStep = 3;
@@ -1912,6 +1994,23 @@
             currentStep = step;
 
             updatePagination();
+
+            // Kembali ke atas saat berpindah halaman
+            requestAnimationFrame(() => {
+                const content = document.querySelector("main.content");
+
+                if (content) {
+                    content.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                } else {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                }
+            });
         }
 
         function nextStep() {

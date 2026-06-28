@@ -2554,16 +2554,18 @@
 
     <div class="step-pagination">
 
-        <button class="page-btn nav-arrow" onclick="prevStep()">‹</button>
-
+        <button class="page-btn nav-arrow" onclick="prevStep()">
+            <i class="bi bi-chevron-left"></i>
+        </button>
         <button class="page-btn" onclick="goToStep(1)" id="stepBtn1">1</button>
         <button class="page-btn" onclick="goToStep(2)" id="stepBtn2">2</button>
         <button class="page-btn" onclick="goToStep(3)" id="stepBtn3">3</button>
         <button class="page-btn" onclick="goToStep(4)" id="stepBtn4">4</button>
         <button class="page-btn" onclick="goToStep(5)" id="stepBtn5">5</button>
         <button class="page-btn" onclick="goToStep(6)" id="stepBtn6">6</button>
-
-        <button class="page-btn nav-arrow" onclick="nextStep()">›</button>
+        <button class="page-btn nav-arrow" onclick="nextStep()">
+            <i class="bi bi-chevron-right"></i>
+        </button>
 
     </div>
 
@@ -2633,38 +2635,38 @@
                 Swal.fire({
                     title: "Cek Pemahaman",
                     html: `
-                                                                            <div style="text-align:left">
+                                                                                    <div style="text-align:left">
 
-                                                                                <p style="text-align:center; font-weight:700; margin-bottom:16px;">
-                                                                                    Fungsi dari rumus 2<sup>h</sup> - 2 adalah?
-                                                                                </p>
+                                                                                        <p style="text-align:center; font-weight:700; margin-bottom:16px;">
+                                                                                            Fungsi dari rumus 2<sup>h</sup> - 2 adalah?
+                                                                                        </p>
 
-                                                                                <div class="swal-options">
+                                                                                        <div class="swal-options">
 
-                                                                                    <label class="swal-option">
-                                                                                        <input type="radio" name="jawaban" value="a">
-                                                                                        <span>Menentukan jumlah subnet</span>
-                                                                                    </label>
+                                                                                            <label class="swal-option">
+                                                                                                <input type="radio" name="jawaban" value="a">
+                                                                                                <span>Menentukan jumlah subnet</span>
+                                                                                            </label>
 
-                                                                                    <label class="swal-option">
-                                                                                        <input type="radio" name="jawaban" value="b">
-                                                                                        <span>Menentukan jumlah host</span>
-                                                                                    </label>
+                                                                                            <label class="swal-option">
+                                                                                                <input type="radio" name="jawaban" value="b">
+                                                                                                <span>Menentukan jumlah host</span>
+                                                                                            </label>
 
-                                                                                    <label class="swal-option">
-                                                                                        <input type="radio" name="jawaban" value="c">
-                                                                                        <span>Menentukan subnet mask</span>
-                                                                                    </label>
+                                                                                            <label class="swal-option">
+                                                                                                <input type="radio" name="jawaban" value="c">
+                                                                                                <span>Menentukan subnet mask</span>
+                                                                                            </label>
 
-                                                                                    <label class="swal-option">
-                                                                                        <input type="radio" name="jawaban" value="d">
-                                                                                        <span>Menentukan network address</span>
-                                                                                    </label>
+                                                                                            <label class="swal-option">
+                                                                                                <input type="radio" name="jawaban" value="d">
+                                                                                                <span>Menentukan network address</span>
+                                                                                            </label>
 
-                                                                                </div>
+                                                                                        </div>
 
-                                                                            </div>
-                                                                        `,
+                                                                                    </div>
+                                                                                `,
                     confirmButtonText: "Kirim",
                     showCancelButton: true,
                     cancelButtonText: "Cancel",
@@ -2725,10 +2727,10 @@
                     icon: "warning",
                     title: "Latihan Belum Lengkap",
                     html: `
-                                                                            Tapi, kamu belum menyelesaikan:<br><br>
-                                                                            <b>${belum.join("<br>")}</b><br><br>
-                                                                            Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
-                                                                        `,
+                                                                                    Tapi, kamu belum menyelesaikan:<br><br>
+                                                                                    <b>${belum.join("<br>")}</b><br><br>
+                                                                                    Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
+                                                                                `,
                     showCancelButton: true,
                     confirmButtonText: "Tetap Lanjut",
                     cancelButtonText: "Kerjakan Dulu",
@@ -2872,6 +2874,25 @@
             }
 
             updatePagination();
+
+            // tampilkan halaman paling atas setiap ganti page
+            requestAnimationFrame(() => {
+
+                const content = document.querySelector("main.content");
+
+                if (content) {
+                    content.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                } else {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                }
+
+            });
         }
 
         function switchIP(id, event) {
@@ -2916,12 +2937,12 @@
             const terkunci = statusTerkunci[indexSoal];
 
             let html = `
-                                                                    <div class="question-box">
-                                                                        <p class="question-number">
-                                                                            Soal ${indexSoal + 1} dari ${soal.length}
-                                                                        </p>
-                                                                        <div class="question-text">${data.q}</div>
-                                                                `;
+                    <div class="question-box">
+                        <p class="question-number">
+                            Soal ${indexSoal + 1} dari ${soal.length}
+                        </p>
+                        <div class="question-text">${data.q}</div>
+                `;
 
             if (data.tipe === "pilgan") {
 
@@ -2929,11 +2950,11 @@
 
                 data.opsi.forEach((o, i) => {
                     html += `
-                                                                            <label class="option">
-                                                                                <input type="radio" name="jawaban" value="${i}" ${terkunci ? "disabled" : ""}>
-                                                                                <span class="option-text">${o}</span>
-                                                                            </label>
-                                                                        `;
+                            <label class="option">
+                                <input type="radio" name="jawaban" value="${i}" ${terkunci ? "disabled" : ""}>
+                                <span class="option-text">${o}</span>
+                            </label>
+                        `;
                 });
 
                 html += `</div>`;
@@ -2941,13 +2962,13 @@
 
             if (data.tipe === "isian") {
                 html += `
-                                                                        <input type="text"
-                                                                                id="jawabanIsian"
-                                                                                class="fill-input"
-                                                                                placeholder="Jawaban"
-                                                                                ${terkunci ? "disabled" : ""}
-                                                                        >
-                                                                    `;
+                        <input type="text"
+                                id="jawabanIsian"
+                                class="fill-input"
+                                placeholder="Jawaban"
+                                ${terkunci ? "disabled" : ""}
+                        >
+                    `;
             }
 
             html += `</div>`;
@@ -3010,7 +3031,9 @@
                         statusTerkunci[indexSoal] = true;
                         nextBtn.disabled = false;
 
-                        document.querySelectorAll("input").forEach(el => el.disabled = true);
+                        quizContainer.querySelectorAll("input").forEach(el => {
+                            el.disabled = true;
+                        });
 
                     } else {
 

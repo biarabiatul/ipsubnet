@@ -9,7 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
-
         .materi-box {
             background: #ffffff;
             border-radius: 8px;
@@ -666,7 +665,8 @@
                     </div>
 
                     <p class="pemantik-text">
-                        Coba pikirkan, jika sebuah jaringan komputer memiliki terlalu banyak perangkat dalam satu jaringan besar, apa masalah yang paling mungkin terjadi?
+                        Coba pikirkan, jika sebuah jaringan komputer memiliki terlalu banyak perangkat dalam satu jaringan
+                        besar, apa masalah yang paling mungkin terjadi?
                     </p>
 
                     <textarea id="jawabanPemantikIP" class="pemantik-input"
@@ -694,15 +694,23 @@
                 </div>
 
                 <br>
-                Melalui ilustrasi pada video tersebut, dapat dipahami bahwa pengelolaan jaringan yang terlalu besar tanpa pembagian akan menjadi kurang efektif dan sulit dikendalikan. Oleh karena itu, diperlukan suatu teknik untuk membagi jaringan menjadi bagian yang lebih kecil, yaitu <i>subnetting</i>.
+                Melalui ilustrasi pada video tersebut, dapat dipahami bahwa pengelolaan jaringan yang terlalu besar tanpa
+                pembagian akan menjadi kurang efektif dan sulit dikendalikan. Oleh karena itu, diperlukan suatu teknik untuk
+                membagi jaringan menjadi bagian yang lebih kecil, yaitu <i>subnetting</i>.
 
-                <div class="highlight-box"> Subnetting adalah proses membagi sebuah jaringan IP yang besar menjadi beberapa jaringan yang lebih kecil (subnet), sehingga jaringan menjadi lebih efisien, terstruktur, dan mudah dikelola. </div>
+                <div class="highlight-box"> Subnetting adalah proses membagi sebuah jaringan IP yang besar menjadi beberapa
+                    jaringan yang lebih kecil (subnet), sehingga jaringan menjadi lebih efisien, terstruktur, dan mudah
+                    dikelola. </div>
 
-                Subnetting merupakan salah satu metode yang digunakan untuk menghemat penggunaan alamat IP, selain teknik lain seperti CIDR, IPv6, dan penggunaan alamat IP privat.
+                Subnetting merupakan salah satu metode yang digunakan untuk menghemat penggunaan alamat IP, selain teknik
+                lain seperti CIDR, IPv6, dan penggunaan alamat IP privat.
 
                 <br><br>
 
-                Dalam jaringan komputer, perangkat dengan <i>network address</i> yang sama berada dalam satu <i>subnet</i>. <i>Subnetting</i> digunakan untuk membagi jaringan besar menjadi <i>subnet</i> yang lebih kecil sesuai kebutuhan. Teknik ini penting terutama pada jaringan berskala besar, meskipun pada jaringan kecil tidak selalu diperlukan.
+                Dalam jaringan komputer, perangkat dengan <i>network address</i> yang sama berada dalam satu <i>subnet</i>.
+                <i>Subnetting</i> digunakan untuk membagi jaringan besar menjadi <i>subnet</i> yang lebih kecil sesuai
+                kebutuhan. Teknik ini penting terutama pada jaringan berskala besar, meskipun pada jaringan kecil tidak
+                selalu diperlukan.
 
                 <br><br>
 
@@ -720,7 +728,8 @@
                 </div>
 
                 <br>
-                Pada gambar tersebut terlihat bahwa satu jaringan utama (131.108.0.0) dibagi menjadi beberapa subnet yang lebih kecil, seperti 131.108.1.0, 131.108.2.0, dan 131.108.3.0.
+                Pada gambar tersebut terlihat bahwa satu jaringan utama (131.108.0.0) dibagi menjadi beberapa subnet yang
+                lebih kecil, seperti 131.108.1.0, 131.108.2.0, dan 131.108.3.0.
 
                 <br>
                 <div class="info-box">
@@ -737,7 +746,9 @@
                 </ol>
 
                 <br>
-                <div class="section-title">Bagaimana Subnetting Bekerja?</div> <i>Subnetting</i> bekerja <strong>dengan cara meminjam</strong> beberapa <i>bit</i> dari bagian <i>host</i> untuk dijadikan bagian <i>network</i> tambahan (<i>subnet</i>). Dalam sebuah alamat <i>IP:</i>
+                <div class="section-title">Bagaimana Subnetting Bekerja?</div> <i>Subnetting</i> bekerja <strong>dengan cara
+                    meminjam</strong> beberapa <i>bit</i> dari bagian <i>host</i> untuk dijadikan bagian <i>network</i>
+                tambahan (<i>subnet</i>). Dalam sebuah alamat <i>IP:</i>
 
                 <ul class="custom-list">
                     <li>Awalnya terdiri dari <strong>Network + Host</strong></li>
@@ -812,7 +823,9 @@
                 </div>
 
                 <br>
-                Ilustrasi tersebut menunjukkan bahwa sebuah jaringan besar dapat dibagi menjadi beberapa subnet yang lebih kecil, seperti 131.108.1.0, 131.108.2.0, dan 131.108.0.0. Setiap subnet memiliki kelompok host dengan rentang alamat IP masing-masing, dan komunikasi antar subnet dilakukan melalui router
+                Ilustrasi tersebut menunjukkan bahwa sebuah jaringan besar dapat dibagi menjadi beberapa subnet yang lebih
+                kecil, seperti 131.108.1.0, 131.108.2.0, dan 131.108.0.0. Setiap subnet memiliki kelompok host dengan
+                rentang alamat IP masing-masing, dan komunikasi antar subnet dilakukan melalui router
 
                 <br>
                 <div class="info-box">
@@ -827,7 +840,8 @@
                         <li>Apa saja network dan broadcast address pada setiap subnet?</li>
                     </ol>
                     <br>
-                    Pertanyaan-pertanyaan tersebut akan dijawab melalui proses perhitungan subnetting pada subbab berikutnya.
+                    Pertanyaan-pertanyaan tersebut akan dijawab melalui proses perhitungan subnetting pada subbab
+                    berikutnya.
                 </div>
 
             </div>
@@ -873,7 +887,7 @@
         </div>
     </div>
 
-    <div class="step-pagination">
+    <div class="step-pagination" id="stepPagination" style="display:none;">
 
         <button class="page-btn nav-arrow" onclick="prevStep()">
             <i class="bi bi-chevron-left"></i>
@@ -935,38 +949,38 @@
                 Swal.fire({
                     title: "Cek Pemahaman",
                     html: `
-                        <div style="text-align:left">
+                                <div style="text-align:left">
 
-                            <p style="text-align:center; font-weight:600; margin-bottom:16px;">
-                                Apa tujuan utama subnetting?
-                            </p>
+                                    <p style="text-align:center; font-weight:600; margin-bottom:16px;">
+                                        Apa tujuan utama subnetting?
+                                    </p>
 
-                            <div class="swal-options">
+                                    <div class="swal-options">
 
-                                <label class="swal-option">
-                                    <input type="radio" name="jawaban" value="a">
-                                    <span>Membuat jaringan lebih lambat</span>
-                                </label>
+                                        <label class="swal-option">
+                                            <input type="radio" name="jawaban" value="a">
+                                            <span>Membuat jaringan lebih lambat</span>
+                                        </label>
 
-                                <label class="swal-option">
-                                    <input type="radio" name="jawaban" value="b">
-                                    <span>Membagi jaringan menjadi bagian lebih kecil</span>
-                                </label>
+                                        <label class="swal-option">
+                                            <input type="radio" name="jawaban" value="b">
+                                            <span>Membagi jaringan menjadi bagian lebih kecil</span>
+                                        </label>
 
-                                <label class="swal-option">
-                                    <input type="radio" name="jawaban" value="c">
-                                    <span>Menghapus alamat IP</span>
-                                </label>
+                                        <label class="swal-option">
+                                            <input type="radio" name="jawaban" value="c">
+                                            <span>Menghapus alamat IP</span>
+                                        </label>
 
-                                <label class="swal-option">
-                                    <input type="radio" name="jawaban" value="d">
-                                    <span>Menambah bandwidth otomatis</span>
-                                </label>
+                                        <label class="swal-option">
+                                            <input type="radio" name="jawaban" value="d">
+                                            <span>Menambah bandwidth otomatis</span>
+                                        </label>
 
-                            </div>
+                                    </div>
 
-                        </div>
-                    `,
+                                </div>
+                            `,
                     confirmButtonText: "Kirim",
                     showCancelButton: true,
 
@@ -1019,10 +1033,10 @@
                     icon: "warning",
                     title: "Latihan Belum Lengkap",
                     html: `
-                        Tapi, kamu belum menyelesaikan:<br><br>
-                        <b>Aktivitas</b><br><br>
-                        Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
-                    `,
+                                Tapi, kamu belum menyelesaikan:<br><br>
+                                <b>Aktivitas</b><br><br>
+                                Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
+                            `,
                     showCancelButton: true,
                     confirmButtonText: "Tetap Lanjut",
                     cancelButtonText: "Kerjakan Dulu",
@@ -1084,16 +1098,16 @@
             const terkunci = statusTerkunci[indexSoal];
 
             let html = `
-                <div class="question-box">
+                        <div class="question-box">
 
-                    <p class="question-number">
-                        Soal ${indexSoal + 1} dari ${soal.length}
-                    </p>
+                            <p class="question-number">
+                                Soal ${indexSoal + 1} dari ${soal.length}
+                            </p>
 
-                    <div class="question-text">
-                        ${data.q}
-                    </div>
-            `;
+                            <div class="question-text">
+                                ${data.q}
+                            </div>
+                    `;
 
             // ===== PILGAN =====
             if (data.tipe === "pilgan") {
@@ -1102,21 +1116,21 @@
 
                 data.opsi.forEach((o, i) => {
                     html += `
-                        <label class="option">
+                                <label class="option">
 
-                            <input
-                                type="radio"
-                                name="jawaban"
-                                value="${i}"
-                                ${terkunci ? "disabled" : ""}
-                            >
+                                    <input
+                                        type="radio"
+                                        name="jawaban"
+                                        value="${i}"
+                                        ${terkunci ? "disabled" : ""}
+                                    >
 
-                            <span class="option-text">
-                                ${o}
-                            </span>
+                                    <span class="option-text">
+                                        ${o}
+                                    </span>
 
-                        </label>
-                    `;
+                                </label>
+                            `;
                 });
 
                 html += `</div>`;
@@ -1125,20 +1139,20 @@
             // ===== ISIAN =====
             if (data.tipe === "isian") {
                 html += `
-                    <input
-                        type="text"
-                        id="jawabanIsian"
-                        class="option-text"
-                        style="
-                            width:100%;
-                            padding:10px;
-                            border:1px solid #d6c3b2;
-                            border-radius:6px;
-                        "
-                        placeholder="Ketik jawaban..."
-                        ${terkunci ? "disabled" : ""}
-                    >
-                `;
+                            <input
+                                type="text"
+                                id="jawabanIsian"
+                                class="option-text"
+                                style="
+                                    width:100%;
+                                    padding:10px;
+                                    border:1px solid #d6c3b2;
+                                    border-radius:6px;
+                                "
+                                placeholder="Ketik jawaban..."
+                                ${terkunci ? "disabled" : ""}
+                            >
+                        `;
             }
 
             html += `</div>`;
@@ -1264,6 +1278,15 @@
             currentStep = step;
 
             updatePagination();
+
+            // kembali ke bagian paling atas
+            requestAnimationFrame(() => {
+                document.querySelector("main.content").scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+
         }
 
         function nextStep() {
@@ -1323,18 +1346,18 @@
             const host = Math.pow(2, (8 - n)) - 2;
 
             subnetInfo.innerHTML = `
-                <div class="highlight-box">
+                        <div class="highlight-box">
 
-                    Jumlah Subnet:
-                    <strong>${subnet}</strong>
+                            Jumlah Subnet:
+                            <strong>${subnet}</strong>
 
-                    <br>
+                            <br>
 
-                    Host per Subnet:
-                    <strong>${host}</strong>
+                            Host per Subnet:
+                            <strong>${host}</strong>
 
-                </div>
-            `;
+                        </div>
+                    `;
         }
 
         const sliderOktet = document.getElementById("sliderBitOktet");
@@ -1391,6 +1414,8 @@
                 // buka materi otomatis
                 document.getElementById("materiSubnetting").style.display = "block";
 
+                document.getElementById("stepPagination").style.display = "flex";
+
                 // JANGAN sembunyikan pemantik
                 // document.querySelector(".pemantik-box").style.display = "none";
 
@@ -1405,33 +1430,30 @@
             const feedback = document.getElementById("feedbackPemantikIP");
             const materi = document.getElementById("materiSubnetting");
 
-            // kalau kosong
             if (input.value.trim() === "") {
 
                 feedback.innerHTML = "Jawaban belum diisi";
                 feedback.style.color = "#b91c1c";
-
                 return;
             }
 
-            // feedback jawaban
             feedback.innerHTML =
-                "Menarik! Sekarang mari kita lihat penjelasannya.";
+                "Jawaban berhasil disimpan! Sekarang mari kita lihat penjelasannya.";
 
             feedback.style.color = "#15803d";
 
             // tampilkan materi
             materi.style.display = "block";
 
-            // disable input & tombol
-            input.disabled = true;
+            // tampilkan pagination
+            document.getElementById("stepPagination").style.display = "flex";
 
+            // disable pemantik
+            input.disabled = true;
             document.querySelector(".pemantik-btn").disabled = true;
 
-            // scroll
-            materi.scrollIntoView({
-                behavior: "smooth"
-            });
+            // tampilkan halaman pertama
+            showStep(1);
         }
     </script>
 

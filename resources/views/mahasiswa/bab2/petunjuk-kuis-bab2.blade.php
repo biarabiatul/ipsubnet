@@ -341,6 +341,16 @@
                 <li><i class="bi bi-check-circle-fill"></i>
                     Keluar dari halaman saat kuis berlangsung akan menyebabkan semua jawaban hilang.
                 </li>
+
+                <li><i class="bi bi-check-circle-fill"></i>
+                    Jika nilai kuis <strong>di bawah KKM</strong>, maka <strong>progres belajar tidak akan
+                        bertambah</strong>.
+                </li>
+
+                <li><i class="bi bi-check-circle-fill"></i>
+                    Nilai remedial mengikuti batas maksimal KKM. Meskipun hasil remedial
+                    melebihi KKM, nilai yang tercatat tetap mengikuti nilai KKM.
+                </li>
             </ul>
 
             <button class="btn-mulai" onclick="mulaiKuis()">

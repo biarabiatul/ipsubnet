@@ -1289,10 +1289,10 @@
                     icon: "success",
                     title: "Semua Jawaban Benar!",
                     html: `
-                                Subnet Mask yang benar adalah:<br><br>
-                                <b>255.255.252.0 (/22)</b><br><br>
-                                Apakah ingin mengerjakan kembali latihan ini?
-                            `,
+                                            Subnet Mask yang benar adalah:<br><br>
+                                            <b>255.255.252.0 (/22)</b><br><br>
+                                            Apakah ingin mengerjakan kembali latihan ini?
+                                        `,
                     showCancelButton: true,
                     confirmButtonText: "Lanjut",
                     cancelButtonText: "Kerjakan Kembali",
@@ -1421,12 +1421,12 @@
                     icon: "success",
                     title: "Semua Jawaban Benar!",
                     html: `
-                                Network Address yang benar adalah:<br><br>
+                                            Network Address yang benar adalah:<br><br>
 
-                                <b>10.10.32.0/19</b><br><br>
+                                            <b>10.10.32.0/19</b><br><br>
 
-                                Apakah ingin mengerjakan kembali latihan ini?
-                            `,
+                                            Apakah ingin mengerjakan kembali latihan ini?
+                                        `,
                     showCancelButton: true,
                     confirmButtonText: "Lanjut",
                     cancelButtonText: "Kerjakan Kembali",
@@ -1524,18 +1524,18 @@
                     const savedValue = jawabanTersimpan[item.id_soal] || "";
 
                     container.innerHTML += `
-                                <div class="cidr-row">
-                                    <span class="cidr-ip">${item.soal}</span>
+                                            <div class="cidr-row">
+                                                <span class="cidr-ip">${item.soal}</span>
 
-                                    <input
-                                        class="mask-input"
-                                        data-id="${item.id_soal}"
-                                        placeholder="..."
-                                        value="${savedValue}"
-                                        inputmode="numeric"
-                                    >
-                                </div>
-                            `;
+                                                <input
+                                                    class="mask-input"
+                                                    data-id="${item.id_soal}"
+                                                    placeholder="..."
+                                                    value="${savedValue}"
+                                                    inputmode="numeric"
+                                                >
+                                            </div>
+                                        `;
                 });
 
                 const inputs = document.querySelectorAll('#cidrContainer input.mask-input');
@@ -1688,34 +1688,34 @@
                 Swal.fire({
                     title: "Cek Pemahaman",
                     html: `
-                            <div style="text-align:center; margin-bottom:14px; font-size:16px;">
-                                CIDR /26 berarti:
-                            </div>
+                                        <div style="text-align:center; margin-bottom:14px; font-size:16px;">
+                                            CIDR /26 berarti:
+                                        </div>
 
-                            <div class="swal-radio-group">
+                                        <div class="swal-radio-group">
 
-                                <label class="swal-radio-option">
-                                    <input type="radio" name="jawaban" value="a">
-                                    26 bit host
-                                </label>
+                                            <label class="swal-radio-option">
+                                                <input type="radio" name="jawaban" value="a">
+                                                26 bit host
+                                            </label>
 
-                                <label class="swal-radio-option">
-                                    <input type="radio" name="jawaban" value="b">
-                                    26 bit network
-                                </label>
+                                            <label class="swal-radio-option">
+                                                <input type="radio" name="jawaban" value="b">
+                                                26 bit network
+                                            </label>
 
-                                <label class="swal-radio-option">
-                                    <input type="radio" name="jawaban" value="c">
-                                    6 bit network
-                                </label>
+                                            <label class="swal-radio-option">
+                                                <input type="radio" name="jawaban" value="c">
+                                                6 bit network
+                                            </label>
 
-                                <label class="swal-radio-option">
-                                    <input type="radio" name="jawaban" value="d">
-                                    32 bit host
-                                </label>
+                                            <label class="swal-radio-option">
+                                                <input type="radio" name="jawaban" value="d">
+                                                32 bit host
+                                            </label>
 
-                            </div>
-                            `,
+                                        </div>
+                                        `,
                     confirmButtonText: "Kirim",
                     showCancelButton: true,
 
@@ -1785,13 +1785,13 @@
                     icon: "warning",
                     title: "Latihan Belum Lengkap",
                     html: `
-                                <div style="text-align:center; line-height:1.6;">
-                                    Tapi, kamu belum menyelesaikan:<br><br>
-                                    ${belum}
-                                    <br>
-                                    Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
-                                </div>
-                            `,
+                                            <div style="text-align:center; line-height:1.6;">
+                                                Tapi, kamu belum menyelesaikan:<br><br>
+                                                ${belum}
+                                                <br>
+                                                Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
+                                            </div>
+                                        `,
                     showCancelButton: true,
                     confirmButtonText: "Tetap Lanjut",
                     cancelButtonText: "Kerjakan Dulu",
@@ -1873,49 +1873,49 @@
             const terkunci = statusTerkunci[indexSoal];
 
             let html = `
-                        <div class="question-box">
+                                    <div class="question-box">
 
-                            <p class="question-number">
-                                Soal ${indexSoal + 1} dari ${soal.length}
-                            </p>
+                                        <p class="question-number">
+                                            Soal ${indexSoal + 1} dari ${soal.length}
+                                        </p>
 
-                            <p class="question-text">
-                                ${data.q}
-                            </p>
-                    `;
+                                        <p class="question-text">
+                                            ${data.q}
+                                        </p>
+                                `;
 
             if (data.tipe === "pilgan") {
                 html += `<div class="options">`;
                 data.opsi.forEach((o, i) => {
                     html += `
-                                <label class="option">
+                                            <label class="option">
 
-                                    <input
-                                        type="radio"
-                                        name="jawaban"
-                                        value="${i}"
-                                        ${terkunci ? "disabled" : ""}
-                                    >
+                                                <input
+                                                    type="radio"
+                                                    name="jawaban"
+                                                    value="${i}"
+                                                    ${terkunci ? "disabled" : ""}
+                                                >
 
-                                    <span class="option-text">
-                                        ${o}
-                                    </span>
+                                                <span class="option-text">
+                                                    ${o}
+                                                </span>
 
-                                </label>
-                            `;
+                                            </label>
+                                        `;
                 });
                 html += `</div>`;
             }
 
             if (data.tipe === "isian") {
                 html += `
-                            <input
-                                id="jawabanIsian"
-                                class="fill-input"
-                                placeholder="Jawaban"
-                                ${terkunci ? "disabled" : ""}
-                            >
-                        `;
+                                        <input
+                                            id="jawabanIsian"
+                                            class="fill-input"
+                                            placeholder="Jawaban"
+                                            ${terkunci ? "disabled" : ""}
+                                        >
+                                    `;
             }
 
             html += `</div>`;
@@ -2012,35 +2012,77 @@
 
         function tampilkanHasil() {
 
-            // kalau progress belum menyelesaikan latihan CIDR
+            // aktivitas sudah selesai
+            aktivitasSelesai = true;
+
+            let belum = [];
+
+            if (!latihan1Selesai) {
+                belum.push("Latihan Subnet Mask (Tabel)");
+            }
+
+            if (!latihan2Selesai) {
+                belum.push("Latihan AND (Network Address)");
+            }
+
             if (!latihan3Selesai) {
+                belum.push("Ayo Berlatih (CIDR)");
+            }
+
+            // masih ada latihan yang belum selesai
+            if (belum.length > 0) {
 
                 Swal.fire({
                     icon: "warning",
                     title: "Hampir Selesai!",
                     html: `
-                                Semua soal aktivitas telah dijawab dengan benar.<br><br>
-                                Namun kamu <b>belum mengerjakan bagian "Ayo Berlatih"</b>.<br><br>
-                                Latihan tersebut membantu memperkuat pemahaman konsep
-                                sebelum melanjutkan ke materi berikutnya.
-                            `,
-                    confirmButtonText: "Kembali ke Latihan",
-                    cancelButtonText: "Tetap Lanjut",
+                            Semua soal aktivitas telah dijawab dengan benar.<br><br>
+
+                            Namun kamu belum menyelesaikan:<br><br>
+
+                            <b style="line-height:1.8">
+                                ${belum.join("<br>")}
+                            </b>
+
+                            <br><br>
+
+                            Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
+                        `,
                     showCancelButton: true,
+                    confirmButtonText: "Tetap Lanjut",
+                    cancelButtonText: "Kembali ke Latihan",
+                    reverseButtons: true,
                     allowOutsideClick: false
+
                 }).then((result) => {
 
-                    if (result.isConfirmed) {
+                    if (result.dismiss === Swal.DismissReason.cancel) {
 
-                        document.querySelector('#cidrContainer')
-                            .scrollIntoView({
-                                behavior: 'smooth'
+                        if (!latihan1Selesai) {
+                            goToStep(1);
+                            document.querySelector(".mini-drill").scrollIntoView({
+                                behavior: "smooth"
                             });
+                        }
 
-                    } else {
+                        else if (!latihan3Selesai) {
+                            goToStep(1);
+                            document.querySelector("#cidrContainer").scrollIntoView({
+                                behavior: "smooth"
+                            });
+                        }
 
+                        else if (!latihan2Selesai) {
+                            goToStep(2);
+                            document.querySelector("#step2").scrollIntoView({
+                                behavior: "smooth"
+                            });
+                        }
+
+                    }
+
+                    if (result.isConfirmed) {
                         window.location.href = "/bab2/rangkuman-bab2";
-
                     }
 
                 });
@@ -2048,20 +2090,16 @@
                 return;
             }
 
-            // kalau sudah selesai
+            // semua selesai
             Swal.fire({
                 icon: "success",
-                title: "Aktivitas Selesai",
-                text: "Semua soal telah dijawab dengan benar.",
-                confirmButtonText: "Lanjut",
-                allowOutsideClick: false
+                title: "Mantap!",
+                text: "Semua aktivitas dan latihan telah dikerjakan dengan baik.",
+                confirmButtonText: "Lanjut"
             }).then(() => {
-
-                aktivitasSelesai = true;
-
                 document.querySelector(".nav-next").click();
-
             });
+
         }
 
         // renderSoal();
@@ -2107,15 +2145,29 @@
 
         function showStep(step) {
 
+            // sembunyikan semua step
             document.querySelectorAll(".step-section").forEach(el => {
                 el.classList.remove("active");
             });
 
+            // tampilkan step yang dipilih
             document.getElementById("step" + step).classList.add("active");
 
             currentStep = step;
 
+            // update pagination
             updatePagination();
+
+            // scroll ke paling atas setelah halaman selesai berubah
+            requestAnimationFrame(() => {
+
+                document.querySelector("main.content").scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            });
+
         }
 
         function nextStep() {

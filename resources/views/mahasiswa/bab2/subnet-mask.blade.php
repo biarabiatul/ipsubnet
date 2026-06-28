@@ -755,13 +755,13 @@
                     </ol>
 
                     <div style="
-                                            margin-top:14px;
-                                            padding:10px 14px;
-                                            background:#fef3c7;
-                                            border:1px solid #f59e0b;
-                                            font-weight:700;
-                                            display:inline-block;
-                                            border-radius:6px;">
+                                                            margin-top:14px;
+                                                            padding:10px 14px;
+                                                            background:#fef3c7;
+                                                            border:1px solid #f59e0b;
+                                                            font-weight:700;
+                                                            display:inline-block;
+                                                            border-radius:6px;">
 
                         <i class="bi bi-check-circle-fill" style="color:#16a34a;"></i>
                         Kesimpulan: Default subnet mask untuk
@@ -921,12 +921,12 @@
 
                     <div style="margin-left:40px;">
                         <table style="
-                                                background:#f3ebe6;
-                                                padding:12px;
-                                                border-radius:6px;
-                                                border-collapse:collapse;
-                                                font-family: monospace;
-                                            ">
+                                                                background:#f3ebe6;
+                                                                padding:12px;
+                                                                border-radius:6px;
+                                                                border-collapse:collapse;
+                                                                font-family: monospace;
+                                                            ">
                             <tr>
                                 <td style="padding:4px 12px;">IP Address</td>
                                 <td style="padding:4px 12px;">:</td>
@@ -1124,29 +1124,29 @@
                     const [ip, mask] = item.soal.split("|");
 
                     container.innerHTML += `
-                                            <div class="drill-row">
+                                                            <div class="drill-row">
 
-                                                <div class="ip-block">
+                                                                <div class="ip-block">
 
-                                                    <div class="ip-text">
-                                                        ${ip}
-                                                    </div>
+                                                                    <div class="ip-text">
+                                                                        ${ip}
+                                                                    </div>
 
-                                                    <div class="subnet-text">
-                                                        Subnet Mask : ${mask}
-                                                    </div>
+                                                                    <div class="subnet-text">
+                                                                        Subnet Mask : ${mask}
+                                                                    </div>
 
-                                                </div>
+                                                                </div>
 
-                                                <input
-                                                    class="mask-input"
-                                                    data-id="${item.id_soal}"
-                                                    placeholder="..."
-                                                    inputmode="numeric"
-                                                >
+                                                                <input
+                                                                    class="mask-input"
+                                                                    data-id="${item.id_soal}"
+                                                                    placeholder="..."
+                                                                    inputmode="numeric"
+                                                                >
 
-                                            </div>
-                                        `;
+                                                            </div>
+                                                        `;
                 });
 
                 // restore jawaban setelah input selesai dibuat
@@ -1543,50 +1543,50 @@
             const terkunci = statusTerkunci[indexSoal];
 
             let html = `
-                                    <div class="question-box">
+                                                    <div class="question-box">
 
-                                        <p class="question-number">
-                                            Soal ${indexSoal + 1} dari ${soal.length}
-                                        </p>
+                                                        <p class="question-number">
+                                                            Soal ${indexSoal + 1} dari ${soal.length}
+                                                        </p>
 
-                                        <p class="question-text">
-                                            ${data.q}
-                                        </p>
+                                                        <p class="question-text">
+                                                            ${data.q}
+                                                        </p>
 
-                                `;
+                                                `;
 
             if (data.tipe === "pilgan") {
                 html += `<div class="options">`;
                 data.opsi.forEach((o, i) => {
                     html += `
-                                            <label class="option">
+                            <label class="option">
 
-                                                <input
-                                                    type="radio"
-                                                    name="jawaban"
-                                                    value="${i}"
-                                                    ${terkunci ? "disabled" : ""}
-                                                >
+                                <input
+                                    type="radio"
+                                    name="jawaban"
+                                    value="${i}"
+                                    ${terkunci ? "disabled" : ""}
+                                >
 
-                                                <span class="option-text">
-                                                    ${o}
-                                                </span>
+                                <span class="option-text">
+                                    ${o}
+                                </span>
 
-                                            </label>
-                                        `;
+                            </label>
+                        `;
                 });
                 html += `</div>`;
             }
 
             if (data.tipe === "isian") {
                 html += `
-                                        <input
-                                            id="jawabanIsian"
-                                            class="fill-input"
-                                            placeholder="Jawaban"
-                                            ${terkunci ? "disabled" : ""}
-                                        >
-                                    `;
+                        <input
+                            id="jawabanIsian"
+                            class="fill-input"
+                            placeholder="Jawaban"
+                            ${terkunci ? "disabled" : ""}
+                        >
+                    `;
             }
 
             html += `</div>`;
@@ -1645,7 +1645,9 @@
                         statusTerkunci[indexSoal] = true;
                         nextBtn.disabled = false;
 
-                        document.querySelectorAll("input").forEach(el => el.disabled = true);
+                        quizContainer.querySelectorAll("input").forEach(el => {
+                            el.disabled = true;
+                        });
 
                     } else {
 
@@ -1726,6 +1728,65 @@
             //     return;
             // }
 
+            // kalau latihan belum lengkap
+            if (!sudahSubnet || !sudahAND) {
+
+                let belum = [];
+
+                if (!sudahSubnet) {
+                    belum.push("Ayo Berlatih Default Subnet Mask");
+                }
+
+                if (!sudahAND) {
+                    belum.push("Ayo Berlatih Operasi AND");
+                }
+
+                Swal.fire({
+                    icon: "warning",
+                    title: "Latihan Belum Lengkap",
+                    html: `
+                    Semua soal aktivitas telah dijawab dengan benar.<br><br>
+
+                    Namun kamu belum menyelesaikan:<br><br>
+
+                    <b>${belum.join("<br>")}</b><br><br>
+
+                    Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
+                `,
+                    showCancelButton: true,
+                    confirmButtonText: "Tetap Lanjut",
+                    cancelButtonText: "Kerjakan Dulu",
+                    allowOutsideClick: false
+                }).then((result) => {
+
+                    if (result.isConfirmed) {
+                        // pindah halaman TANPA progress
+                        window.location.href = "/bab2/cidr";
+                    }
+
+                    if (result.dismiss === Swal.DismissReason.cancel) {
+
+                        if (!sudahSubnet) {
+                            showStep(1);
+                            document.querySelector(".ayo-berlatih-subnet")
+                                ?.scrollIntoView({ behavior: "smooth" });
+
+                        } else {
+
+                            showStep(2);
+                            document.querySelector("#andingContainer")
+                                ?.scrollIntoView({ behavior: "smooth" });
+
+                        }
+
+                    }
+
+                });
+
+                return;
+            }
+
+            // kalau semua sudah selesai
             Swal.fire({
                 icon: "success",
                 title: "Mantap!",
@@ -1773,36 +1834,36 @@
                 Swal.fire({
                     title: "Cek Pemahaman",
                     html: `
-                                            <div style="text-align:center; margin-bottom:12px; font-size:16px;">
-                                                Tentukan subnet mask default dari IP berikut:
-                                                <br><br>
-                                                <b>172.16.5.4</b>
-                                            </div>
+                                                            <div style="text-align:center; margin-bottom:12px; font-size:16px;">
+                                                                Tentukan subnet mask default dari IP berikut:
+                                                                <br><br>
+                                                                <b>172.16.5.4</b>
+                                                            </div>
 
-                                            <div class="swal-radio-group">
+                                                            <div class="swal-radio-group">
 
-                                                <label class="swal-radio-option">
-                                                    <input type="radio" name="jawaban" value="a">
-                                                    <span>255.0.0.0</span>
-                                                </label>
+                                                                <label class="swal-radio-option">
+                                                                    <input type="radio" name="jawaban" value="a">
+                                                                    <span>255.0.0.0</span>
+                                                                </label>
 
-                                                <label class="swal-radio-option">
-                                                    <input type="radio" name="jawaban" value="b">
-                                                    <span>255.255.0.0</span>
-                                                </label>
+                                                                <label class="swal-radio-option">
+                                                                    <input type="radio" name="jawaban" value="b">
+                                                                    <span>255.255.0.0</span>
+                                                                </label>
 
-                                                <label class="swal-radio-option">
-                                                    <input type="radio" name="jawaban" value="c">
-                                                    <span>255.255.255.0</span>
-                                                </label>
+                                                                <label class="swal-radio-option">
+                                                                    <input type="radio" name="jawaban" value="c">
+                                                                    <span>255.255.255.0</span>
+                                                                </label>
 
-                                                <label class="swal-radio-option">
-                                                    <input type="radio" name="jawaban" value="d">
-                                                    <span>255.255.255.255</span>
-                                                </label>
+                                                                <label class="swal-radio-option">
+                                                                    <input type="radio" name="jawaban" value="d">
+                                                                    <span>255.255.255.255</span>
+                                                                </label>
 
-                                            </div>
-                                        `,
+                                                            </div>
+                                                        `,
                     confirmButtonText: "Kirim",
                     showCancelButton: true,
 
@@ -1886,17 +1947,17 @@
                     icon: "warning",
                     title: "Latihan Belum Lengkap",
                     html: `
-                                            <div style="text-align:center; line-height:1.7;">
-                                                Tapi, kamu belum menyelesaikan:<br><br>
+                                                            <div style="text-align:center; line-height:1.7;">
+                                                                Tapi, kamu belum menyelesaikan:<br><br>
 
-                                                <div style="text-align:center; display:inline-block;">
-                                                    ${belum}
-                                                </div>
+                                                                <div style="text-align:center; display:inline-block;">
+                                                                    ${belum}
+                                                                </div>
 
-                                                <br>
-                                                Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
-                                            </div>
-                                        `,
+                                                                <br>
+                                                                Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
+                                                            </div>
+                                                        `,
                     showCancelButton: true,
                     confirmButtonText: "Tetap Lanjut",
                     cancelButtonText: "Kerjakan Dulu",
@@ -1989,15 +2050,23 @@
 
         function showStep(step) {
 
+            currentStep = step;
+
             document.querySelectorAll(".step-section").forEach(el => {
                 el.classList.remove("active");
             });
 
             document.getElementById("step" + step).classList.add("active");
 
-            currentStep = step;
-
             updatePagination();
+
+            // tunggu browser selesai mengganti halaman
+            setTimeout(() => {
+                document.querySelector("main.content").scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            }, 50);
         }
 
         function nextStep() {

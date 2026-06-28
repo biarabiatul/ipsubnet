@@ -2159,32 +2159,32 @@
                 Swal.fire({
                     title: "Cek Pemahaman VLSM",
                     html: `
-                                                                                                                                                                                    <div class="swal-question">
-                                                                                                                                                                                        Apa tujuan utama VLSM?
-                                                                                                                                                                                    </div>
+                        <div class="swal-question">
+                            Apa tujuan utama VLSM?
+                        </div>
 
-                                                                                                                                                                                    <div class="swal-options">
-                                                                                                                                                                                        <label class="swal-option">
-                                                                                                                                                                                            <input type="radio" name="jawaban" value="a">
-                                                                                                                                                                                            <span>Semua subnet harus sama besar</span>
-                                                                                                                                                                                        </label>
+                        <div class="swal-options">
+                            <label class="swal-option">
+                                <input type="radio" name="jawaban" value="a">
+                                <span>Semua subnet harus sama besar</span>
+                            </label>
 
-                                                                                                                                                                                        <label class="swal-option">
-                                                                                                                                                                                            <input type="radio" name="jawaban" value="b">
-                                                                                                                                                                                            <span>Membagi subnet sesuai kebutuhan host</span>
-                                                                                                                                                                                        </label>
+                            <label class="swal-option">
+                                <input type="radio" name="jawaban" value="b">
+                                <span>Membagi subnet sesuai kebutuhan host</span>
+                            </label>
 
-                                                                                                                                                                                        <label class="swal-option">
-                                                                                                                                                                                            <input type="radio" name="jawaban" value="c">
-                                                                                                                                                                                            <span>Menghapus subnet</span>
-                                                                                                                                                                                        </label>
+                            <label class="swal-option">
+                                <input type="radio" name="jawaban" value="c">
+                                <span>Menghapus subnet</span>
+                            </label>
 
-                                                                                                                                                                                        <label class="swal-option">
-                                                                                                                                                                                            <input type="radio" name="jawaban" value="d">
-                                                                                                                                                                                            <span>Menambah IP tanpa batas</span>
-                                                                                                                                                                                        </label>
-                                                                                                                                                                                    </div>
-                                                                                                                                                                                `,
+                            <label class="swal-option">
+                                <input type="radio" name="jawaban" value="d">
+                                <span>Menambah IP tanpa batas</span>
+                            </label>
+                        </div>
+                    `,
                     confirmButtonText: "Kirim",
                     showCancelButton: true,
 
@@ -2238,22 +2238,22 @@
                     icon: "warning",
                     title: "Latihan Belum Lengkap",
                     html: `
-                                                                                                                                                                <div style="margin-top:10px;">
-                                                                                                                                                                    Tapi, kamu belum menyelesaikan:
-                                                                                                                                                                    <br><br>
+                                                                                                                                                                    <div style="margin-top:10px;">
+                                                                                                                                                                        Tapi, kamu belum menyelesaikan:
+                                                                                                                                                                        <br><br>
 
-                                                                                                                                                                    <div style="font-weight:600; line-height:1.8;">
-                                                                                                                                                                        ${!sudahMencoba ? "Ayo Mencoba<br>" : ""}
-                                                                                                                                                                        ${!sudahLatihan1 ? "Ayo Berlatih 1<br>" : ""}
-                                                                                                                                                                        ${!sudahLatihan2 ? "Ayo Berlatih 2<br>" : ""}
-                                                                                                                                                                        ${!sudahLatihan3 ? "Ayo Berlatih 3<br>" : ""}
-                                                                                                                                                                        ${!sudahAktivitas ? "Aktivitas<br>" : ""}
+                                                                                                                                                                        <div style="font-weight:600; line-height:1.8;">
+                                                                                                                                                                            ${!sudahMencoba ? "Ayo Mencoba<br>" : ""}
+                                                                                                                                                                            ${!sudahLatihan1 ? "Ayo Berlatih 1<br>" : ""}
+                                                                                                                                                                            ${!sudahLatihan2 ? "Ayo Berlatih 2<br>" : ""}
+                                                                                                                                                                            ${!sudahLatihan3 ? "Ayo Berlatih 3<br>" : ""}
+                                                                                                                                                                            ${!sudahAktivitas ? "Aktivitas<br>" : ""}
+                                                                                                                                                                        </div>
+
+                                                                                                                                                                        <br>
+                                                                                                                                                                        Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
                                                                                                                                                                     </div>
-
-                                                                                                                                                                    <br>
-                                                                                                                                                                    Kamu tetap bisa lanjut, tetapi progres belum dihitung selesai.
-                                                                                                                                                                </div>
-                                                                                                                                                            `,
+                                                                                                                                                                `,
                     showCancelButton: true,
                     confirmButtonText: "Tetap Lanjut",
                     cancelButtonText: "Kerjakan Dulu",
@@ -2357,6 +2357,14 @@
             if (activeBtn) activeBtn.classList.add("active");
 
             currentStep = step;
+
+            // kembali ke bagian paling atas
+            requestAnimationFrame(() => {
+                document.querySelector("main.content").scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
         }
 
         function goToStep(step) {
@@ -2382,10 +2390,10 @@
             const q = quizData[currentQuiz];
 
             let html = `
-                                                                                                                                                                                                                                                                                                                                                                                                <div class="question-box">
-                                                                                                                                                                                                                                                                                                                                                                                                    <div class="question-number">Soal ${currentQuiz + 1} dari ${quizData.length}</div>
-                                                                                                                                                                                                                                                                                                                                                                                                    <div class="question-text">${q.q}</div>
-                                                                                                                                                                                                                                                                                                                                                                                            `;
+                                                                                                                                                                                                                                                                                                                                                                                                    <div class="question-box">
+                                                                                                                                                                                                                                                                                                                                                                                                        <div class="question-number">Soal ${currentQuiz + 1} dari ${quizData.length}</div>
+                                                                                                                                                                                                                                                                                                                                                                                                        <div class="question-text">${q.q}</div>
+                                                                                                                                                                                                                                                                                                                                                                                                `;
 
             if (q.tipe === "pilgan") {
 
@@ -2397,11 +2405,11 @@
                     const isDisabled = lockedQuestions[currentQuiz] ? "disabled" : "";
 
                     html += `
-                                                                            <label class="option">
-                                                                                <input type="radio" name="answer" value="${i}" ${isChecked} ${isDisabled}>
-                                                                                <span class="option-text">${opt}</span>
-                                                                            </label>
-                                                                        `;
+                                                                                <label class="option">
+                                                                                    <input type="radio" name="answer" value="${i}" ${isChecked} ${isDisabled}>
+                                                                                    <span class="option-text">${opt}</span>
+                                                                                </label>
+                                                                            `;
                 });
 
                 html += `</div>`;
@@ -2412,10 +2420,10 @@
                 const disabled = lockedQuestions[currentQuiz] ? "disabled" : "";
 
                 html += `
-                                                                        <div class="input-row">
-                                                                            <input type="text" id="isianInput" value="${value}" ${disabled} placeholder="...">
-                                                                        </div>
-                                                                    `;
+                                                                            <div class="input-row">
+                                                                                <input type="text" id="isianInput" value="${value}" ${disabled} placeholder="...">
+                                                                            </div>
+                                                                        `;
             }
 
             html += `</div>`;

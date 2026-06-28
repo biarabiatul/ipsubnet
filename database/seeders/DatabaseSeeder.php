@@ -19,6 +19,10 @@ class DatabaseSeeder extends Seeder
             DosenSeeder::class,
             KelasSeeder::class,
             MahasiswaSeeder::class,
+            KuisHasilSeeder::class,
+            KuisSeeder::class,
+            KuisSoalSeeder::class,
+            ProgresSeeder::class,
             BankSoalSeeder::class,
         ]);
     }
