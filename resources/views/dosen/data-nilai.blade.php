@@ -339,13 +339,21 @@
 
         <div class="table-control">
             <div class="show-data">
-                Tampilkan
-                <select>
-                    <option>10</option>
-                    <option>25</option>
-                    <option>50</option>
-                </select>
-                data
+                <form method="GET" id="perPageForm">
+
+                    {{-- Supaya filter tidak hilang --}}
+                    <input type="hidden" name="kelas_id" value="{{ request('kelas_id') }}">
+                    <input type="hidden" name="search" value="{{ request('search') }}">
+
+                    Tampilkan
+                    <select name="per_page" onchange="this.form.submit()">
+                        <option value="10" {{ request('per_page', 10) == 10 ? 'selected' : '' }}>10</option>
+                        <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
+                        <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
+                    </select>
+                    data
+
+                </form>
             </div>
             <button class="btn-export"
                 onclick="window.location.href='{{ url('/export-excel?kelas_id=' . request('kelas_id') . '&search=' . request('search')) }}'">
@@ -569,20 +577,20 @@
                             let isBest = bestMap[namaKuis].id === item.id;
 
                             html += `
-                                <tr class="row-riwayat ${isBest ? 'best-row' : ''}">
-                                    <td>${index + 1}</td>
-                                    <td>
-                                        ${namaKuis}
-                                        ${isBest ? '<i class="bi bi-trophy-fill text-warning"></i>' : ''}
-                                    </td>
-                                    <td>${percobaanMap[namaKuis]}</td>
-                                    <td>${item.nilai_tampil}</td>
-                                    <td>${item.total_benar}</td>
-                                    <td>${item.total_salah}</td>
-                                    <td>${formatDurasi(item.waktu_mengerjakan)}</td>
-                                    <td>${item.end_time ?? '-'}</td>
-                                </tr>
-                            `;
+                                    <tr class="row-riwayat ${isBest ? 'best-row' : ''}">
+                                        <td>${index + 1}</td>
+                                        <td>
+                                            ${namaKuis}
+                                            ${isBest ? '<i class="bi bi-trophy-fill text-warning"></i>' : ''}
+                                        </td>
+                                        <td>${percobaanMap[namaKuis]}</td>
+                                        <td>${item.nilai_tampil}</td>
+                                        <td>${item.total_benar}</td>
+                                        <td>${item.total_salah}</td>
+                                        <td>${formatDurasi(item.waktu_mengerjakan)}</td>
+                                        <td>${item.end_time ?? '-'}</td>
+                                    </tr>
+                                `;
                         });
 
                     }
@@ -596,11 +604,11 @@
             document.getElementById('modalRiwayat').style.display = 'none';
         }
 
-        window.onclick = function(event) { 
-            let modal = document.getElementById('modalRiwayat'); 
+        window.onclick = function (event) {
+            let modal = document.getElementById('modalRiwayat');
             if (event.target == modal) {
-                modal.style.display = 'none'; 
-            } 
+                modal.style.display = 'none';
+            }
         }
 
         function filterRiwayat() {

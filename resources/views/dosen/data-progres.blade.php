@@ -291,89 +291,101 @@
 
         <!-- CONTROL -->
         <div class="table-control">
-            <div class="show-data">
-                Tampilkan
-                <select>
-                    <option>10</option>
-                    <option>25</option>
-                </select>
-                data
-            </div>
+
+            <form method="GET">
+
+                {{-- supaya filter tetap tersimpan --}}
+                <input type="hidden" name="kelas_id" value="{{ $kelasId }}">
+                <input type="hidden" name="search" value="{{ $search }}">
+
+                <div class="show-data">
+                    Tampilkan
+
+                    <select name="per_page" onchange="this.form.submit()">
+                        <option value="10" {{ request('per_page', 10) == 10 ? 'selected' : '' }}>10</option>
+                        <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
+                        <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
+                    </select>
+
+                    data
+                </div>
+
+            </form>
 
         </div>
 
         <!-- TABLE -->
-         <div class="table-responsive">
-        <table>
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Kelas</th>
-                    <th>Progres</th>
-                    <th>Status</th>
-                    <th>Terakhir Akses</th>
-                    <th>Riwayat</th>
-                </tr>
-            </thead>
-
-            <tbody>
-
-                @forelse($data as $index => $item)
-
-                    @php
-                        $persen = optional($item->progres)->persen ?? 0;
-                        $lastAccess = optional($item->progres)->updated_at;
-                    @endphp
-
+        <div class="table-responsive">
+            <table>
+                <thead>
                     <tr>
-                        <td>{{ ($data->currentPage() - 1) * $data->perPage() + $index + 1 }}</td>
-
-                        <td>{{ $item->nama_lengkap }}</td>
-                        <td>{{ $item->kelas->nama_kelas ?? '-' }}</td>
-
-                        <!-- PROGRES -->
-                        <td>
-                            {{ $persen }}%
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: {{ $persen }}%"></div>
-                            </div>
-                        </td>
-
-                        <!-- STATUS -->
-                        <td>
-                            @if($persen == 100)
-                                <span class="badge-selesai">Selesai</span>
-                            @elseif($persen > 0)
-                                <span class="badge-proses">Proses</span>
-                            @else
-                                <span class="badge-belum">Belum</span>
-                            @endif
-                        </td>
-
-                        <!-- TERAKHIR AKSES -->
-                        <td>
-                            {{ $lastAccess ? \Carbon\Carbon::parse($lastAccess)->format('d M Y H:i') : '-' }}
-                        </td>
-
-                        <!-- RIWAYAT -->
-                        <td>
-                            <button class="btn-riwayat" onclick="showDetail({{ $item->id }})">
-                                <i class="bi bi-search"></i>
-                            </button>
-                        </td>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Kelas</th>
+                        <th>Progres</th>
+                        <th>Status</th>
+                        <th>Terakhir Akses</th>
+                        <th>Riwayat</th>
                     </tr>
+                </thead>
 
-                @empty
-                    <tr>
-                        <td colspan="7" style="text-align:center; padding:20px;">
-                            Tidak ada data
-                        </td>
-                    </tr>
-                @endforelse
+                <tbody>
 
-            </tbody>
-        </table>
+                    @forelse($data as $index => $item)
+
+                        @php
+                            $persen = optional($item->progres)->persen ?? 0;
+                            $lastAccess = optional($item->progres)->updated_at;
+                        @endphp
+
+                        <tr>
+                            <td>{{ ($data->currentPage() - 1) * $data->perPage() + $index + 1 }}</td>
+
+                            <td>{{ $item->nama_lengkap }}</td>
+                            <td>{{ $item->kelas->nama_kelas ?? '-' }}</td>
+
+                            <!-- PROGRES -->
+                            <td>
+                                {{ $persen }}%
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: {{ $persen }}%"></div>
+                                </div>
+                            </td>
+
+                            <!-- STATUS -->
+                            <td>
+                                @if($persen == 100)
+                                    <span class="badge-selesai">Selesai</span>
+                                @elseif($persen > 0)
+                                    <span class="badge-proses">Proses</span>
+                                @else
+                                    <span class="badge-belum">Belum</span>
+                                @endif
+                            </td>
+
+                            <!-- TERAKHIR AKSES -->
+                            <td>
+                                {{ $lastAccess ? \Carbon\Carbon::parse($lastAccess)->format('d M Y H:i') : '-' }}
+                            </td>
+
+                            <!-- RIWAYAT -->
+                            <td>
+                                <button class="btn-riwayat" onclick="showDetail({{ $item->id }})">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                    @empty
+                        <tr>
+                            <td colspan="7" style="text-align:center; padding:20px;">
+                                Tidak ada data
+                            </td>
+                        </tr>
+                    @endforelse
+
+                </tbody>
+            </table>
         </div>
 
     </div>
@@ -460,14 +472,14 @@
                             }
 
                             html += `
-                                        <tr class="row-detail">
-                                            <td>${index + 1}</td>
-                                            <td>${item.bab}</td>
-                                            <td>${item.subbab}</td>
-                                            <td>${statusBadge}</td>
-                                            <td>${item.updated_at ? formatTanggal(item.updated_at) : '-'}</td>
-                                        </tr>
-                                    `;
+                                            <tr class="row-detail">
+                                                <td>${index + 1}</td>
+                                                <td>${item.bab}</td>
+                                                <td>${item.subbab}</td>
+                                                <td>${statusBadge}</td>
+                                                <td>${item.updated_at ? formatTanggal(item.updated_at) : '-'}</td>
+                                            </tr>
+                                        `;
                         });
                     }
 

@@ -38,11 +38,15 @@ class NilaiController extends Controller
             $query->where('nama_lengkap', 'like', '%' . $request->search . '%');
         }
 
-        $data = $query->paginate(10)->withQueryString();
+        $perPage = $request->get('per_page', 10);
+
+        $data = $query
+            ->paginate($perPage)
+            ->withQueryString();
 
         return view('dosen.data-nilai', compact('data', 'kelas'));
     }
-    
+
     public function riwayat($id)
     {
         $riwayat = KuisHasil::with(['kuis', 'user.kelas'])

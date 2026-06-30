@@ -106,7 +106,11 @@ class ProgresController extends Controller
             $query->where('nama_lengkap', 'like', '%' . $search . '%');
         }
 
-        $data = $query->paginate(10)->withQueryString();
+        $perPage = $request->get('per_page', 10);
+
+        $data = $query
+            ->paginate($perPage)
+            ->withQueryString();
 
         return view('dosen.data-progres', compact(
             'data',
